@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from 'redux'
-import thunk from 'react-thunk'
+import thunk from 'redux-thunk'
 // import reducers from './Reducers/'
 import * as actionType from './Actions/types'
 
