@@ -2,5 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-
-ReactDOM.render(<App />, document.getElementById('root'));
+import store from './store'
+import { Provider } from 'react-redux'
+import { replaceServices } from './Actions/serviceActions'
+store.dispatch(replaceServices())
+ReactDOM.render(
+    <Provider store={store}>
+        <App />
+    </Provider>
+    , document.getElementById('root'));

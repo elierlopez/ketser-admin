@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import  ServicesList from './Components/Services/servicesList'
 
 class App extends Component {
   render() {
@@ -12,6 +13,7 @@ class App extends Component {
           </header>
           <br></br>
           Ketser admin
+         <ServicesList/> 
         </div>
     );
   }
