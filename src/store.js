@@ -1,18 +1,8 @@
 import { createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-// import reducers from './Reducers/'
-import * as actionType from './Actions/types'
+import reducers from './Reducers/'
 
-
-const serviceReducer = (state = [], action) => {
-    if (action.type === actionType.GET_SERVICES) {
-        return {
-            ...state,
-            services: action.services
-        }
-    }
-    return state
-}
+const initialStatus = { services: [] }
 
 const logger = store => next => action => {
     console.log('dispatching', action)
@@ -20,4 +10,4 @@ const logger = store => next => action => {
     console.log('next state', store.getState())
     return result
 }
-export default createStore(serviceReducer, { services: [] }, applyMiddleware(logger, thunk))
+export default createStore(reducers, initialStatus, applyMiddleware(logger, thunk))
