@@ -4,7 +4,7 @@ import React from 'react'
 import ServiceItem from './serviceItem'
 import { replaceServices } from '../../Actions/serviceActions'
 
-const AllServices = props  => {
+const AllServices = props => {
     // constructor(props) {
     //     super(props);
     //     this.state = {
@@ -39,7 +39,7 @@ const AllServices = props  => {
         return props.services.map(service => {
             return (
                 <ServiceItem
-                    key={service.id}
+                    key={service.Id}
                     {...service}
                 />
             )

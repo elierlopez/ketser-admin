@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import { Image } from 'react-bootstrap'
 
 class ServiceItem extends Component {
-    simpleRow = ({ id, image = 'http://ketser.azurewebsites.net/images/services/60.jpeg', name }) => {
+    simpleRow = ({ Id, image = 'http://ketser.azurewebsites.net/images/services/60.jpeg', Name }) => {
         return (
             <tr >
                 <td className="photo"> <Image src={image} circle responsive /> </td>
-                <td className="names">{id}</td>
-                <td className="names">{name}</td>
+                <td className="names">{Id}</td>
+                <td className="names">{Name}</td>
                 <td></td><td></td>
             </tr>
         )
