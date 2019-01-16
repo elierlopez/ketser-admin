@@ -1,22 +1,15 @@
 import { connect } from 'react-redux'
 import { Table } from 'react-bootstrap'
-import React from 'react'
+import React, { Component } from 'react'
 import ServiceItem from './serviceItem'
 import { replaceServices } from '../../Actions/serviceActions'
 
-const AllServices = props => {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         services: []
-    //     };
-    // }
+class AllServices extends Component {
+    componentDidMount() {
+        this.props.load()
+    }
 
-    // componentDidMount() {
-    //     console.log('paso el did mount')
-    //     this.props.load()        
-    // }
-    const servicesTable = () => {
+    servicesTable = () => {
         return (
             <Table striped bordered condensed hover>
                 <thead>
@@ -29,14 +22,14 @@ const AllServices = props => {
                     </tr>
                 </thead>
                 <tbody>
-                    {renderUserItems()}
+                    {this.renderUserItems()}
                 </tbody>
             </Table>
         );
     }
 
-    const renderUserItems = () => {
-        return props.services.map(service => {
+    renderUserItems = () => {
+        return this.props.services.map(service => {
             return (
                 <ServiceItem
                     key={service.Id}
@@ -46,16 +39,14 @@ const AllServices = props => {
         })
     }
 
-    const render = () => {
+    render() {
         return (
             <div>
                 <hr />
-                {servicesTable()}
+                {this.servicesTable()}
             </div>
         )
     }
-
-    return (render())
 }
 
 const mapStateToProps = state => {
