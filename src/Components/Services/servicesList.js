@@ -1,10 +1,32 @@
 import { connect } from 'react-redux'
-import { Table } from 'react-bootstrap'
+import { Table, Modal, Button } from 'react-bootstrap'
 import React, { Component } from 'react'
 import ServiceItem from './serviceItem'
 import { replaceServices } from '../../Actions/serviceActions'
+// import Modal from '../../Components/Services/serviceItemModal'
+
 
 class AllServices extends Component {
+    constructor() {
+        super();
+        this.state = {
+            isModalOpen: false,
+            modalService: {}
+        }
+    }
+
+    openModalHandler = (e, modalService) => {
+        this.setState({
+            isModalOpen: true,
+            modalService
+        });
+    }
+
+    closeModalHandler = () => {
+        this.setState({
+            isModalOpen: false
+        });
+    }
     componentDidMount() {
         this.props.load()
     }
@@ -34,6 +56,7 @@ class AllServices extends Component {
                 <ServiceItem
                     key={service.Id}
                     {...service}
+                    openModal={e => this.openModalHandler(e, service)}
                 />
             )
         })
@@ -44,6 +67,27 @@ class AllServices extends Component {
             <div>
                 <hr />
                 {this.servicesTable()}
+
+                <Modal
+                    keyboard={true}
+                    show={this.state.isModalOpen}
+                    onHide={this.closeModalHandler}
+                    dialogClassName="custom-modal">
+                    <Modal.Header closeButton>
+                        <Modal.Title id="contained-modal-title-lg">
+                            Modal heading
+                    </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                        <h4>Wrapped Text</h4>
+                        <input type="text" defaultValue={this.state.modalService.Id} />
+                        <input type="text" defaultValue={this.state.modalService.Name} />
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button onClick={this.closeModalHandler}>Close</Button>
+                        <Button onClick={this.closeModalHandler}>Save</Button>
+                    </Modal.Footer>
+                </Modal>
             </div>
         )
     }

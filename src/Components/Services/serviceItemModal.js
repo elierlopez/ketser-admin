@@ -3,7 +3,9 @@ import '../../modal.css'
 
 const modal = (props) => {
     return (
-        <div>
+        <div style={{
+            height: '0px'
+        }} >
             <div className="modal-wrapper"
                 style={{
                     transform: props.show ? 'translateY(0vh)' : 'translateY(-100vh)',
@@ -14,9 +16,8 @@ const modal = (props) => {
                     <span className="close-modal-btn" onClick={props.close}>×</span>
                 </div>
                 <div className="modal-body">
-                    <p>
-                        {props.children}
-                    </p>
+                     <input type='text' defaultValue={props.Id}></input>   
+                     <input type='text' defaultValue={props.Name}></input>   
                 </div>
                 <div className="modal-footer">
                     <button className="btn-cancel" onClick={props.close}>CLOSE</button>
@@ -27,4 +28,4 @@ const modal = (props) => {
     )
 }
 
-export default modal;
+export default modal
