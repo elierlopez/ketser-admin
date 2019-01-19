@@ -81,7 +81,7 @@ class AllServices extends Component {
                     <Modal.Body>
                         <h4>Wrapped Text</h4>
                         <input type="text" defaultValue={this.state.modalService.Id} />
-                        <input type="text" defaultValue={this.state.modalService.Name} />
+                        <input type="text" defaultValue={this.state.modalServicegit.Name} />
                     </Modal.Body>
                     <Modal.Footer>
                         <Button onClick={this.closeModalHandler}>Close</Button>
