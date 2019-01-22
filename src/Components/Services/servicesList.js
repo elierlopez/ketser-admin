@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { Table, Modal, Button } from 'react-bootstrap'
 import React, { Component } from 'react'
 import ServiceItem from './serviceItem'
-import { replaceServices } from '../../Actions/serviceActions'
+import { replaceServices, saveService } from '../../Actions/serviceActions'
 // import Modal from '../../Components/Services/serviceItemModal'
 
 
@@ -27,8 +27,14 @@ class AllServices extends Component {
             isModalOpen: false
         });
     }
+
     componentDidMount() {
         this.props.load()
+    }
+
+    hanldeSave = service => {
+        console.log(service)
+        this.props.save(service)
     }
 
     servicesTable = () => {
@@ -80,12 +86,19 @@ class AllServices extends Component {
                     </Modal.Header>
                     <Modal.Body>
                         <h4>Wrapped Text</h4>
-                        <input type="text" defaultValue={this.state.modalService.Id} />
-                        <input type="text" defaultValue={this.state.modalServicegit.Name} />
+                        <input type="text"
+                            defaultValue={this.state.modalService.Id}
+                            ref={IdInput => this.IdInput = IdInput}
+                        />
+                        <input type="text"
+                            placeholder="Service Name"
+                            defaultValue={this.state.modalService.Name}
+                            ref={NameInput => this.NameInput = NameInput}
+                        />
                     </Modal.Body>
                     <Modal.Footer>
                         <Button onClick={this.closeModalHandler}>Close</Button>
-                        <Button onClick={this.closeModalHandler}>Save</Button>
+                        <Button onClick={() => this.hanldeSave({ Name: this.NameInput.value, Id: this.IdInput.value })}>Save</Button>
                     </Modal.Footer>
                 </Modal>
             </div>
@@ -103,6 +116,9 @@ const mapDispatchToProps = dispatch => {
     return {
         load: () => {
             dispatch(replaceServices())
+        },
+        save: service => {
+            dispatch(saveService(service))
         }
     }
 }

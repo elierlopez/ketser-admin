@@ -5,7 +5,7 @@ import * as url from './backendUrl'
 const replaceServices = () => {
     return dispatch => {
         var config = {
-            crossdomain: true 
+            crossdomain: true
         }
         return axios.get(url.GetAllServices, config)
             .then(response => {
@@ -18,4 +18,20 @@ const replaceServices = () => {
     }
 }
 
-export { replaceServices }
+const saveService = service => {
+    return dispatch => {
+        var config = {
+            crossdomain: true
+        }
+        return axios.post(url.Save_Service, service, config)
+            .then(response => {
+                dispatch({
+                    type: types.SAVE_SERVICE,
+                    services: response.data
+                })
+            })
+            .catch(() => console.log(`$Issues calling ${url.Save_Service}`))
+    }
+}
+
+export { replaceServices, saveService }

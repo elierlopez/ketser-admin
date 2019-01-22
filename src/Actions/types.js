@@ -1,1 +1,2 @@
 export const GET_SERVICES = 'GET_SERVICES'
+export const SAVE_SERVICE = 'SAVE_SERVICE'
