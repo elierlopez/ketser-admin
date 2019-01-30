@@ -5,12 +5,12 @@ export default function (state = [], action) {
         return action.services
     }
     else if (action.type === actionType.SAVE_SERVICE) {
-        state.map(sv => {
-            if (sv.Id === action.Id) {
-                return Object.assign({}, action)
-            }
-            return sv
-        })
+        const stateCopy = [...state]
+        const index = state.findIndex(i => i.Id === action.service.Id)
+        if (index > -1) {
+            stateCopy[index] = action.service
+            return stateCopy
+        }
     }
     return state
 }

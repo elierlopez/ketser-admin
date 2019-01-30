@@ -1,4 +1,4 @@
-export const KetserSiteUrl = 'http://localhost:58949' //'http://ketser.azurewebsites.net'
+export const KetserSiteUrl = 'http://ketser.azurewebsites.net' //'http://localhost:58949'
 export const RestUrl = `${KetserSiteUrl}/api`
 
 //Project 
@@ -16,5 +16,5 @@ export const PersonImagePath = `${KetserSiteUrl}/Images/Persons`
 //Services
 export const GetCategorizedServices = `${RestUrl}/Service/GetCategorizedServices`
 export const GetAllServices = `${RestUrl}/Service/GetAll`
-export const Save_Service = `${RestUrl}/Service/Save`
+export const Save_Service = `${RestUrl}/Service/UpdateProfile`
 export const ServiceImagePath = `${KetserSiteUrl}/Images/Services` 

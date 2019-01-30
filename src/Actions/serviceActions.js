@@ -20,14 +20,11 @@ const replaceServices = () => {
 
 const saveService = service => {
     return dispatch => {
-        var config = {
-            crossdomain: true
-        }
-        return axios.post(url.Save_Service, service, config)
+        return axios.post(url.Save_Service, service)
             .then(response => {
                 dispatch({
                     type: types.SAVE_SERVICE,
-                    services: response.data
+                    service: response.data
                 })
             })
             .catch(() => console.log(`$Issues calling ${url.Save_Service}`))

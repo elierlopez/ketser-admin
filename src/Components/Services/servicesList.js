@@ -3,8 +3,6 @@ import { Table, Modal, Button } from 'react-bootstrap'
 import React, { Component } from 'react'
 import ServiceItem from './serviceItem'
 import { replaceServices, saveService } from '../../Actions/serviceActions'
-// import Modal from '../../Components/Services/serviceItemModal'
-
 
 class AllServices extends Component {
     constructor() {
@@ -32,9 +30,9 @@ class AllServices extends Component {
         this.props.load()
     }
 
-    hanldeSave = service => {
-        console.log(service)
+    handleSave = service => {
         this.props.save(service)
+        this.closeModalHandler()
     }
 
     servicesTable = () => {
@@ -86,7 +84,7 @@ class AllServices extends Component {
                     </Modal.Header>
                     <Modal.Body>
                         <h4>Wrapped Text</h4>
-                        <input type="text"
+                        <input type="hidden"
                             defaultValue={this.state.modalService.Id}
                             ref={IdInput => this.IdInput = IdInput}
                         />
@@ -98,7 +96,7 @@ class AllServices extends Component {
                     </Modal.Body>
                     <Modal.Footer>
                         <Button onClick={this.closeModalHandler}>Close</Button>
-                        <Button onClick={() => this.hanldeSave({ Name: this.NameInput.value, Id: this.IdInput.value })}>Save</Button>
+                        <Button onClick={() => this.handleSave({ Name: this.NameInput.value, Id: this.IdInput.value })}>Save</Button>
                     </Modal.Footer>
                 </Modal>
             </div>
