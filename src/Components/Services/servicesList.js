@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { Table, Modal, Button } from 'react-bootstrap'
+import { Table, Modal, Button, FormControl, FormGroup, Checkbox } from 'react-bootstrap'
 import React, { Component } from 'react'
 import ServiceItem from './serviceItem'
 import { replaceServices, saveService } from '../../Actions/serviceActions'
@@ -14,24 +14,37 @@ class AllServices extends Component {
     }
 
     openModalHandler = (e, modalService) => {
+        console.log(modalService)
         this.setState({
             isModalOpen: true,
             modalService
-        });
+        })
     }
 
     closeModalHandler = () => {
         this.setState({
             isModalOpen: false
-        });
+        })
     }
 
     componentDidMount() {
         this.props.load()
     }
 
-    handleSave = service => {
-        this.props.save(service)
+    handleSave = event => {
+        event.preventDefault();
+
+        console.log({
+            Id: this.IdInput.value,
+            Name: this.NameInput.value,
+            Deleted: this.isDeletedInput.checked
+        })
+
+        this.props.save({
+            Id: this.IdInput.value,
+            Name: this.NameInput.value,
+            Deleted: this.isDeletedInput.checked
+        })
         this.closeModalHandler()
     }
 
@@ -72,32 +85,41 @@ class AllServices extends Component {
                 <hr />
                 {this.servicesTable()}
 
+
+                {/*
+                 hay que mandar este modal a otro component
+                 y en el onSave poner
+                    onClick={this.handlesSave} 
+                 asi sin parametros
+                 */}
                 <Modal
                     keyboard={true}
                     show={this.state.isModalOpen}
                     onHide={this.closeModalHandler}
                     dialogClassName="custom-modal">
-                    <Modal.Header closeButton>
-                        <Modal.Title id="contained-modal-title-lg">
-                            Modal heading
-                    </Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body>
-                        <h4>Wrapped Text</h4>
-                        <input type="hidden"
-                            defaultValue={this.state.modalService.Id}
-                            ref={IdInput => this.IdInput = IdInput}
-                        />
-                        <input type="text"
-                            placeholder="Service Name"
-                            defaultValue={this.state.modalService.Name}
-                            ref={NameInput => this.NameInput = NameInput}
-                        />
-                    </Modal.Body>
-                    <Modal.Footer>
-                        <Button onClick={this.closeModalHandler}>Close</Button>
-                        <Button onClick={() => this.handleSave({ Name: this.NameInput.value, Id: this.IdInput.value })}>Save</Button>
-                    </Modal.Footer>
+                    <form onSubmit={this.handleSave}>
+
+                        <Modal.Header closeButton>
+                            <Modal.Title id="contained-modal-title-lg">
+                                UPDATE SERVICE
+                        </Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body>                            
+                            <input type="hidden" defaultValue={this.state.modalService.Id} ref={IdInput => this.IdInput = IdInput} />
+
+                            <FormGroup controlId="serviceName">
+                                <label>Service Name</label>
+                                <FormControl type="text" placeholder="Enter Service Name" defaultValue={this.state.modalService.Name} inputRef={NameInput => this.NameInput = NameInput}/>
+                            </FormGroup>
+                            <Checkbox type="checkbox" inputRef={ref => this.isDeletedInput = ref} defaultChecked={this.state.modalService.Deleted}>Is Deleted</Checkbox>                            
+
+
+                        </Modal.Body>
+                        <Modal.Footer>
+                            <Button onClick={this.closeModalHandler}>CLOSE</Button>
+                            <Button bsStyle="info" type="submit" className="btn btn-primary">SUBMIT</Button>
+                        </Modal.Footer>
+                    </form>
                 </Modal>
             </div>
         )

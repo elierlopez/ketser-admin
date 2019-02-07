@@ -17,3 +17,29 @@ Access to XMLHttpRequest at 'http://localhost:58949/api/Service/Save' from origi
 has been blocked by CORS policy: Response to preflight request doesn't pass access control check: It does not have HTTP ok status.
 
 */
+
+/* Miercoles 30 de Enero
+
+El problema se soluciono en el backen haciendo uso de un paquete http.cors 
+y poniendo la linea enableCors() en el webApiConfig del backend 
+
+En los reducers, el principio de inmutabilidad se cumple EVITANDO ALTERAR EL ESTADO,
+para ellos basta crear una copia del estado antes de modificarlo, 
+Si el reducer tiene que modificar un elmento de un arreglo, 
+no es necesario hacer una copia del elemento si ya se hizo una copia de todo el arreglo.
+ 
+*/
+
+
+/* Miercoles 06 de febrero
+
+Ya funciona el popup que me sirve para editar servicios
+
+Para poder hacer funcionar los componente de react boostrap en un form (el del popup)
+tuve que usar el inpuRef
+    inputRef={NameInput => this.NameInput = NameInput}/>
+ Cosa que no es reciomendable segun un comentario que lei
+ 1) Hay que ver la forma de hacerlo mas limpio
+ 2) hay que arreglar el look de las imagenes en el service list
+ 
+*/
