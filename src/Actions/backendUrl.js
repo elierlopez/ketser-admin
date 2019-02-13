@@ -8,6 +8,7 @@ export const SaveProjectAttachments = `${RestUrl}/Project/Saveattachments`
 export const GetProjectQuotesByPersonId = `${RestUrl}/Project/GetProjectQuotes`
 
 //Person
+export const GetAllPersons = `${RestUrl}/Person/GetAll`
 export const GetPersonByDeviceId = `${RestUrl}/Person/GetByDeviceCode`
 export const SavePerson = `${RestUrl}/Person/Save`
 export const SavePersonProfileImage = `${RestUrl}/Person/SavePersonProfileImage`

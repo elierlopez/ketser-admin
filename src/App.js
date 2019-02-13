@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import  ServicesList from './Components/Services/servicesList'
+import  PersonList from './Components/Persons/personsList'
 
 class App extends Component {
   render() {
@@ -13,7 +14,9 @@ class App extends Component {
           </header>
           <br></br>
           Ketser admin
+         <PersonList/> 
          <ServicesList/> 
+
         </div>
     );
   }
