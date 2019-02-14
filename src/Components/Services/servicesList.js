@@ -54,7 +54,6 @@ class AllServices extends Component {
                 <thead>
                     <tr>
                         <th>Image</th>
-                        <th>Id</th>
                         <th>Name</th>
                         <th></th>
                         <th></th>

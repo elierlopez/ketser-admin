@@ -33,9 +33,9 @@ class PersonsList extends Component {
         this.props.load()
     }
 
-    handleSave = (event,person) => {
-        event.preventDefault();
-        console.log(person)
+    handleSave = (event, person) => {
+        event.preventDefault()
+        console.log(this.nameInput.value + '-')
         this.props.save(person)
         this.closeModalHandler()
     }
@@ -46,9 +46,9 @@ class PersonsList extends Component {
                 <thead>
                     <tr>
                         <th>Image</th>
-                        <th>Id</th>
                         <th>Name</th>
                         <th>Last Name</th>
+                        <th></th>
                         <th></th>
                     </tr>
                 </thead>
@@ -86,7 +86,7 @@ class PersonsList extends Component {
                     isModalOpen={this.state.isModalOpen}
                     person={this.state.modalPerson}
                     handleSave={this.handleSave}
-                    closeModalHandler={this.handleSave} />
+                    handleCloseModal={this.closeModalHandler} />
             </div>
         )
     }
