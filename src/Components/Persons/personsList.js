@@ -33,9 +33,9 @@ class PersonsList extends Component {
         this.props.load()
     }
 
-    handleSave = (event, person) => {
-        event.preventDefault()
-        console.log(this.nameInput.value + '-')
+    handleSave = (person) => {
+        console.log(person)
+        // event.preventDefault()        
         this.props.save(person)
         this.closeModalHandler()
     }
@@ -76,12 +76,6 @@ class PersonsList extends Component {
             <div>
                 <hr />
                 {this.personTable()}
-
-                {/* hay que mandar este modal a otro component
-                 y en el onSave poner
-                    onClick={this.handlesSave} 
-                 asi sin parametros */}
-
                 <PersonModal
                     isModalOpen={this.state.isModalOpen}
                     person={this.state.modalPerson}

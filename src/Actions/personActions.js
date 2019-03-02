@@ -8,7 +8,7 @@ const replacePersons = () => {
             .then(response => {
                 dispatch({
                     type: types.GET_PERSONS,
-                    users: response.data
+                    persons: response.data
                 })
             })
             .catch(() => console.log(`$Issues calling ${url.GetAllPersons}`))
@@ -21,7 +21,7 @@ const savePerson = person => {
             .then(response => {
                 dispatch({
                     type: types.SAVE_PERSON,
-                    user: response.data
+                    person: response.data
                 })
             })
             .catch(() => console.log(`$Issues calling ${url.SavePerson}`))

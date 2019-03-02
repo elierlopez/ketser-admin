@@ -2,7 +2,7 @@ import * as actionType from '../Actions/types'
 
 export default function (state = [], action) {
     if (action.type === actionType.GET_PERSONS) {
-        return action.users
+        return action.persons
     }
     else if (action.type === actionType.SAVE_PERSON) {
         const stateCopy = [...state]
