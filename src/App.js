@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-import  ServicesList from './Components/Services/servicesList'
-import  PersonList from './Components/Persons/personsList'
+import ServicesList from './Components/Services/servicesList'
+import PersonList from './Components/Persons/personsList'
+import { Home } from './Components/Home'
+import { BrowserRouter, Route } from 'react-router-dom'
+import logo from './logo.svg';
 
 class App extends Component {
   render() {
     return (
+
+      <BrowserRouter>
         <div className="App">
           <header className="App-header">
             < img src={logo} className="App-logo" alt="logo" />
@@ -14,10 +18,13 @@ class App extends Component {
           </header>
           <br></br>
           Ketser admin
-         <PersonList/> 
-         <ServicesList/> 
+
+          <Route path="/" exact component={Home} />
+          <Route path="/services" component={ServicesList} />
+          <Route path="/persons" component={PersonList} />
 
         </div>
+      </BrowserRouter>
     );
   }
 }

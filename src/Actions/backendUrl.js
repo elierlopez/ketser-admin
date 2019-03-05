@@ -1,4 +1,4 @@
-export const KetserSiteUrl = 'http://localhost:58949' //'http://ketser.azurewebsites.net' 
+export const KetserSiteUrl = 'http://ketser.azurewebsites.net' 
 export const RestUrl = `${KetserSiteUrl}/api`
 
 //Project 
