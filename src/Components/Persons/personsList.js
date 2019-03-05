@@ -34,8 +34,6 @@ class PersonsList extends Component {
     }
 
     handleSave = (person) => {
-        console.log(person)
-        // event.preventDefault()        
         this.props.save(person)
         this.closeModalHandler()
     }

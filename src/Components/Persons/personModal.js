@@ -8,8 +8,18 @@ class PersonsModal extends Component {
         this.state = {}
     }
 
+    handleSubmit = (event, person) => {
+        event.preventDefault();
+        this.props.handleSave({
+            ...this.props.person,
+            FirstName: this.FirstName.value,
+            LastName: this.LastName.value,
+            Deleted: this.Deleted.checked
+        })
+    }
+
     render = () => {
-        const { isModalOpen, person, handleSave, handleCloseModal } = this.props
+        const { isModalOpen, person, handleCloseModal } = this.props
         return (
             isModalOpen
                 ?
@@ -19,9 +29,7 @@ class PersonsModal extends Component {
                         show={isModalOpen}
                         onHide={handleCloseModal}
                         dialogClassName="custom-modal">
-                        {/* onSubmit={handleSave({ Id: this.IdInput.value, FirstName: this.FirstNameInput.value, LastName: this.LastNameInput.value })} */}
-                        <form>
-
+                        <form onSubmit={this.handleSubmit} >
                             <Modal.Header closeButton>
                                 <Modal.Title id="contained-modal-title-lg">
                                     UPDATE PERSON
@@ -44,15 +52,7 @@ class PersonsModal extends Component {
                             </Modal.Body>
                             <Modal.Footer>
                                 <Button onClick={handleCloseModal}>CLOSE</Button>
-                                <Button bsStyle="info" onClick={
-                                    () => handleSave({
-                                        ...person,
-                                        Id: person.Id,
-                                        FirstName: this.FirstName.value,
-                                        LastName: this.LastName.value,
-                                        Deleted: this.Deleted.checked
-                                    })
-                                } className="btn btn-primary">SUBMIT</Button>
+                                <Button bsStyle="info" className="btn btn-primary" type="submit" >SUBMIT</Button>
                             </Modal.Footer>
                         </form>
                     </Modal>
