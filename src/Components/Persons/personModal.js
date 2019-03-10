@@ -1,21 +1,38 @@
-import { Modal, Button, FormControl, FormGroup, Checkbox } from 'react-bootstrap'
+import { Modal, Button, FormControl, FormGroup, Checkbox, Image } from 'react-bootstrap'
 import React, { Component } from 'react'
+import { PersonImagePath } from '../../Actions/backendUrl'
 
 
 class PersonsModal extends Component {
     constructor(props) {
         super(props)
-        this.state = {}
+        this.state = {
+            selectedFile: null
+        }
     }
 
-    handleSubmit = (event, person) => {
-        event.preventDefault();
-        this.props.handleSave({
+    fileSelectHandler = event => {
+        this.setState({ selectedFile: event.target.files[0] })
+    }
+
+    handleSubmit = (event) => {
+        console.log(JSON.stringify({
             ...this.props.person,
             FirstName: this.FirstName.value,
             LastName: this.LastName.value,
             Deleted: this.Deleted.checked
-        })
+        }))
+        event.preventDefault();
+        const fd = new FormData()
+        if (this.state.selectedFile)
+            fd.append('image', this.state.selectedFile, this.state.selectedFile.name)
+        fd.append('person', JSON.stringify({
+            ...this.props.person,
+            FirstName: this.FirstName.value,
+            LastName: this.LastName.value,
+            Deleted: this.Deleted.checked
+        }))
+        this.props.handleSave(fd)
     }
 
     render = () => {
@@ -36,8 +53,9 @@ class PersonsModal extends Component {
                                 </Modal.Title>
                             </Modal.Header>
                             <Modal.Body>
-                                <input type="hidden" defaultValue={person.Id} />
-
+                                <Image src={`${PersonImagePath}/${person.Id}.jpg`} height={35} rounded onClick={() => this.photoInput.click()} />
+                                <input type="file" ref={photoInput => this.photoInput = photoInput} style={{ display: 'none' }} onChange={this.fileSelectHandler} />
+                                <br />
                                 <FormGroup controlId="personName">
                                     <label>Person Name</label>
                                     <FormControl type="text" placeholder="Enter Name" defaultValue={person.FirstName} inputRef={name => this.FirstName = name} />
