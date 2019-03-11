@@ -15,8 +15,7 @@ class PersonsList extends Component {
         }
     }
 
-    openModalHandler = (e, modalPerson) => {
-        console.log(modalPerson)
+    openModalHandler = (modalPerson) => {
         this.setState({
             isModalOpen: true,
             modalPerson
@@ -33,7 +32,16 @@ class PersonsList extends Component {
         this.props.load()
     }
 
-    handleSave = (person) => {
+    deactivateHandler = person => {
+        const fd = new FormData()
+        fd.append('person', JSON.stringify({
+            ...person,
+            Deleted: !person.Deleted
+        }))
+        this.props.save(fd)
+    }
+
+    handleSave = person => {
         this.props.save(person)
         this.closeModalHandler()
     }
@@ -63,7 +71,8 @@ class PersonsList extends Component {
                 <PersonItem
                     key={person.Id}
                     {...person}
-                    openModal={e => this.openModalHandler(e, person)}
+                    openModal={() => this.openModalHandler(person)}
+                    deactivateHanlder={() => this.deactivateHandler(person)}
                 />
             )
         })

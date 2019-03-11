@@ -15,13 +15,7 @@ class PersonsModal extends Component {
         this.setState({ selectedFile: event.target.files[0] })
     }
 
-    handleSubmit = (event) => {
-        console.log(JSON.stringify({
-            ...this.props.person,
-            FirstName: this.FirstName.value,
-            LastName: this.LastName.value,
-            Deleted: this.Deleted.checked
-        }))
+    handleSubmit = event => {
         event.preventDefault();
         const fd = new FormData()
         if (this.state.selectedFile)

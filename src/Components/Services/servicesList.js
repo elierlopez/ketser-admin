@@ -1,15 +1,17 @@
 import { connect } from 'react-redux'
-import { Table, Modal, Button, FormControl, FormGroup, Checkbox } from 'react-bootstrap'
+import { Table, Modal, Button, FormControl, FormGroup, Checkbox, Image } from 'react-bootstrap'
 import React, { Component } from 'react'
 import ServiceItem from './serviceItem'
 import { replaceServices, saveService } from '../../Actions/serviceActions'
+import { ServiceImagePath } from '../../Actions/backendUrl'
 
 class AllServices extends Component {
     constructor() {
         super();
         this.state = {
             isModalOpen: false,
-            modalService: {}
+            modalService: {},
+            selectedFile: null
         }
     }
 
@@ -31,20 +33,31 @@ class AllServices extends Component {
         this.props.load()
     }
 
+    fileSelectHandler = event => {
+        this.setState({ selectedFile: event.target.files[0] })
+    }
+
+    deactivateHandler = service => {
+        const fd = new FormData()
+        fd.append('service', JSON.stringify({
+            ...service,
+            Deleted: !service.Deleted
+        }))
+        this.props.save(fd)
+    }
+
     handleSave = event => {
         event.preventDefault();
+        const fd = new FormData()
+        if (this.state.selectedFile)
+            fd.append('image', this.state.selectedFile, this.state.selectedFile.name)
 
-        console.log({
-            Id: this.IdInput.value,
+        fd.append('service', JSON.stringify({
+            ...this.state.modalService,
             Name: this.NameInput.value,
             Deleted: this.isDeletedInput.checked
-        })
-
-        this.props.save({
-            Id: this.IdInput.value,
-            Name: this.NameInput.value,
-            Deleted: this.isDeletedInput.checked
-        })
+        }))
+        this.props.save(fd)
         this.closeModalHandler()
     }
 
@@ -55,7 +68,6 @@ class AllServices extends Component {
                     <tr>
                         <th>Image</th>
                         <th>Name</th>
-                        <th></th>
                         <th></th>
                     </tr>
                 </thead>
@@ -73,6 +85,7 @@ class AllServices extends Component {
                     key={service.Id}
                     {...service}
                     openModal={e => this.openModalHandler(e, service)}
+                    deactivateHandler={() => this.deactivateHandler(service)}
                 />
             )
         })
@@ -83,35 +96,27 @@ class AllServices extends Component {
             <div>
                 <hr />
                 {this.servicesTable()}
-
-
-                {/*
-                 hay que mandar este modal a otro component
-                 y en el onSave poner
-                    onClick={this.handlesSave} 
-                 asi sin parametros
-                 */}
                 <Modal
                     keyboard={true}
                     show={this.state.isModalOpen}
                     onHide={this.closeModalHandler}
                     dialogClassName="custom-modal">
                     <form onSubmit={this.handleSave}>
-
                         <Modal.Header closeButton>
                             <Modal.Title id="contained-modal-title-lg">
                                 UPDATE SERVICE
                         </Modal.Title>
                         </Modal.Header>
-                        <Modal.Body>                            
-                            <input type="hidden" defaultValue={this.state.modalService.Id} ref={IdInput => this.IdInput = IdInput} />
+                        <Modal.Body>
+                            <Image src={`${ServiceImagePath}/${this.state.modalService.Id}.jpg`} height={35} rounded onClick={() => this.photoInput.click()} />
+                            <input type="file" ref={photoInput => this.photoInput = photoInput} style={{ display: 'none' }} onChange={this.fileSelectHandler} />
+                            <br />
 
                             <FormGroup controlId="serviceName">
                                 <label>Service Name</label>
-                                <FormControl type="text" placeholder="Enter Service Name" defaultValue={this.state.modalService.Name} inputRef={NameInput => this.NameInput = NameInput}/>
+                                <FormControl type="text" placeholder="Enter Service Name" defaultValue={this.state.modalService.Name} inputRef={NameInput => this.NameInput = NameInput} />
                             </FormGroup>
-                            <Checkbox type="checkbox" inputRef={ref => this.isDeletedInput = ref} defaultChecked={this.state.modalService.Deleted}>Is Deleted</Checkbox>                            
-
+                            <Checkbox type="checkbox" inputRef={ref => this.isDeletedInput = ref} defaultChecked={this.state.modalService.Deleted}>Is Deleted</Checkbox>
 
                         </Modal.Body>
                         <Modal.Footer>
