@@ -1,4 +1,4 @@
-export const KetserSiteUrl = 'http://localhost:58949' //'http://ketser.azurewebsites.net' 
+export const KetserSiteUrl = 'http://ketser.azurewebsites.net' //http://localhost:58949/Images/Persons/2.jpg
 export const RestUrl = `${KetserSiteUrl}/api`
 
 //Project 
@@ -9,7 +9,8 @@ export const GetProjectQuotesByPersonId = `${RestUrl}/Project/GetProjectQuotes`
 
 //Person
 export const GetAllPersons = `${RestUrl}/Person/GetAll?includeInactives=true`
-export const GetPersonByDeviceId = `${RestUrl}/Person/GetByDeviceCode`
+export const GetPersonByDeviceId = `${RestUrl}
+/Person/GetByDeviceCode`
 export const SavePerson = `${RestUrl}/Person/SaveProfile`
 export const SavePersonProfileImage = `${RestUrl}/Person/SavePersonProfileImage`
 export const PersonImagePath = `${KetserSiteUrl}/Images/Persons`

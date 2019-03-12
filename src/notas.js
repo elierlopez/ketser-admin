@@ -43,3 +43,10 @@ tuve que usar el inpuRef
  2) hay que arreglar el look de las imagenes en el service list
  
 */
+
+/* Martes 12 Marzo 
+
+TODO: CUando cambias la imagen de un person no se carga la nueva imagen en el control de image
+TODO: Incluso despues de refrescar semuestra la imagen anterior, parece se un problema de cache
+
+*/
