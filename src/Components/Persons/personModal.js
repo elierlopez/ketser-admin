@@ -1,7 +1,7 @@
-import { Modal, Button, FormControl, FormGroup, Checkbox, Image } from 'react-bootstrap'
+import { Modal, Button, FormControl, FormGroup, FormCheck, Image } from 'react-bootstrap'
 import React, { Component } from 'react'
 import { PersonImagePath } from '../../Actions/backendUrl'
-
+import './styles.css';
 
 class PersonsModal extends Component {
     constructor(props) {
@@ -52,19 +52,24 @@ class PersonsModal extends Component {
                                 <br />
                                 <FormGroup controlId="personName">
                                     <label>Person Name</label>
-                                    <FormControl type="text" placeholder="Enter Name" defaultValue={person.FirstName} inputRef={name => this.FirstName = name} />
+                                    <FormControl type="text" placeholder="Enter Name" defaultValue={person.FirstName} ref={name => this.FirstName = name} />
                                 </FormGroup>
                                 <FormGroup controlId="personLastName">
                                     <label>Person Last Name</label>
-                                    <FormControl type="text" placeholder="Enter Last Name" defaultValue={person.LastName} inputRef={lastName => this.LastName = lastName} />
+                                    <FormControl type="text" placeholder="Enter Last Name" defaultValue={person.LastName} ref={lastName => this.LastName = lastName} />
                                 </FormGroup>
-                                <Checkbox type="checkbox" defaultChecked={person.Deleted} inputRef={Deleted => this.Deleted = Deleted} >Is Deleted</Checkbox>
-
+                                <FormCheck
+                                    id={'isDeleted'}
+                                    label={'Is Deleted'}
+                                    type={'checkbox'}
+                                    custom
+                                    defaultChecked={person.Deleted}
+                                    ref={Deleted => this.Deleted = Deleted} />
 
                             </Modal.Body>
                             <Modal.Footer>
                                 <Button onClick={handleCloseModal}>CLOSE</Button>
-                                <Button bsStyle="info" className="btn btn-primary" type="submit" >SUBMIT</Button>
+                                <Button variant="success" className="btn btn-primary" type="submit" >SUBMIT</Button>
                             </Modal.Footer>
                         </form>
                     </Modal>

@@ -7,13 +7,13 @@ class PersonItem extends Component {
         return (
             <tr onDoubleClick={openModal} >
                 <td className="photo">
-                    <Image src={image} responsive circle />
+                    <Image src={image} />
                     {/* <Image src={`${PersonImagePath}/${Id}.jpg`} height={35} rounded  /> */}
                 </td>
                 <td className="names">{FirstName}</td>
                 <td className="names">{LastName}</td>
                 <td>
-                    <Button onClick={deactivateHanlder} bsStyle={Deleted ? "success" : "danger"}>{Deleted ? "ACTIVAR" : "DESACTIVAR"}</Button>
+                    <Button onClick={deactivateHanlder} variant={Deleted ? "success" : "danger"}>{Deleted ? "ACTIVAR" : "DESACTIVAR"}</Button>
                 </td>
                 <td></td>
             </tr>

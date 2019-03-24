@@ -7,12 +7,12 @@ class ServiceItem extends Component {
         return (
             <tr onDoubleClick={openModal} >
                 <td className="photo">
-                    <Image src={image} responsive />
+                    <Image src={image} />
                     {/* <Image src={`${ServiceImagePath}/${Id}.jpeg`} width={40} height={35} /> */}
                 </td>
                 <td className="names">{Name}</td>
                 <td>
-                    <Button onClick={deactivateHandler} bsStyle={Deleted ? "success" : "danger"}>{Deleted ? "ACTIVAR" : "DESACTIVAR"}</Button>
+                    <Button onClick={deactivateHandler} variant={Deleted ? "success" : "danger"}>{Deleted ? "ACTIVAR" : "DESACTIVAR"}</Button>
                 </td>
             </tr>
         )

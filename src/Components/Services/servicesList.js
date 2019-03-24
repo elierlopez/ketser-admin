@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { Table, Modal, Button, FormControl, FormGroup, Checkbox, Image } from 'react-bootstrap'
+import { Table, Modal, Button, FormControl, FormGroup, Form, Image } from 'react-bootstrap'
 import React, { Component } from 'react'
 import ServiceItem from './serviceItem'
 import { replaceServices, saveService } from '../../Actions/serviceActions'
@@ -63,7 +63,7 @@ class AllServices extends Component {
 
     servicesTable = () => {
         return (
-            <Table striped bordered condensed hover>
+            <Table striped bordered hover>
                 <thead>
                     <tr>
                         <th>Image</th>
@@ -72,13 +72,13 @@ class AllServices extends Component {
                     </tr>
                 </thead>
                 <tbody>
-                    {this.renderUserItems()}
+                    {this.renderServiceItems()}
                 </tbody>
             </Table>
         );
     }
 
-    renderUserItems = () => {
+    renderServiceItems = () => {
         return this.props.services.map(service => {
             return (
                 <ServiceItem
@@ -114,14 +114,20 @@ class AllServices extends Component {
 
                             <FormGroup controlId="serviceName">
                                 <label>Service Name</label>
-                                <FormControl type="text" placeholder="Enter Service Name" defaultValue={this.state.modalService.Name} inputRef={NameInput => this.NameInput = NameInput} />
+                                <FormControl type="text" placeholder="Enter Service Name" defaultValue={this.state.modalService.Name} ref={NameInput => this.NameInput = NameInput} />
                             </FormGroup>
-                            <Checkbox type="checkbox" inputRef={ref => this.isDeletedInput = ref} defaultChecked={this.state.modalService.Deleted}>Is Deleted</Checkbox>
+                            <Form.Check
+                                id={'isDeleted'}
+                                label={'Is Deleted'}
+                                custom
+                                type={'checkbox'}
+                                ref={isDeleted => this.isDeletedInput = isDeleted} 
+                                defaultChecked={this.state.modalService.Deleted} />
 
                         </Modal.Body>
                         <Modal.Footer>
                             <Button onClick={this.closeModalHandler}>CLOSE</Button>
-                            <Button bsStyle="info" type="submit" className="btn btn-primary">SUBMIT</Button>
+                            <Button variant="success" type="submit" className="btn btn-primary">SUBMIT</Button>
                         </Modal.Footer>
                     </form>
                 </Modal>

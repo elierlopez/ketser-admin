@@ -48,7 +48,7 @@ class PersonsList extends Component {
 
     personTable = () => {
         return (
-            <Table striped bordered condensed hover>
+            <Table striped bordered hover>
                 <thead>
                     <tr>
                         <th>Image</th>
