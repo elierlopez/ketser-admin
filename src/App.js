@@ -3,6 +3,7 @@ import './App.css';
 import ServicesList from './Components/Services/servicesList'
 import PersonList from './Components/Persons/personsList'
 import { Home } from './Components/Home'
+import Login from './Components/Auth/logIn'
 import { BrowserRouter, Route, NavLink } from 'react-router-dom'
 import logo from './logo.svg';
 
@@ -23,6 +24,7 @@ class App extends Component {
           <Route path="/" exact component={Home} />
           <Route path="/services" component={ServicesList} />
           <Route path="/persons" component={PersonList} />
+          <Route path="/Login" component={Login} />
 
         </div>
       </BrowserRouter>

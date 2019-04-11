@@ -50,3 +50,11 @@ TODO: CUando cambias la imagen de un person no se carga la nueva imagen en el co
 TODO: Incluso despues de refrescar semuestra la imagen anterior, parece se un problema de cache
 
 */
+
+/* Martes 12 Marzo 
+
+Revisar bien la forma de hacer el post al GetToken endpoint
+probablemente ese es el problema y no el cors
+
+*/
+
