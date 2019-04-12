@@ -3,10 +3,13 @@ import * as types from './types'
 import * as url from './backendUrl'
 
 const getToken = credentials => {
-    console.log('entro el get token action')
-    console.log(credentials)
+    const config = {
+        headers: {
+            'content-type': 'application/x-www-form-urlencoded',
+        }
+    }
     return dispatch => {
-        return axios.post(url.GetToken, credentials)
+        return axios.post(url.GetToken, credentials, config)
             .then(response => {
                 dispatch({
                     type: types.GET_TOKEN,
@@ -17,9 +20,9 @@ const getToken = credentials => {
     }
 }
 
-const createUser = () => {
+const createUser = user => {
     return dispatch => {
-        return axios.get(url.CreateUser)
+        return axios.post(url.CreateUser, user)
             .then(response => {
                 dispatch({
                     type: types.CREATE_USER,

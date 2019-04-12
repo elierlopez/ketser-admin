@@ -9,16 +9,14 @@ class Login extends Component {
         event.preventDefault()
 
         // const fd = new FormData()
-        // fd.append('person', JSON.stringify({
-        //     grant_type: 'password',
-        //     user: this.userName.value,
-        //     password: this.pwd.value
-        // }))
+        // fd.append('grant_type', 'password')
+        // fd.append('username', this.userName.value)
+        // fd.append('password', this.pwd.value)
         // this.props.logIn(fd)
 
         this.props.logIn({
             grant_type: 'password',
-            user: this.userName.value,
+            username: this.userName.value,
             password: this.pwd.value
         })
     }
