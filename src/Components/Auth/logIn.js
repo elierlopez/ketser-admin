@@ -7,18 +7,8 @@ import { getToken } from '../../Actions/authActions'
 class Login extends Component {
     manageLogin = event => {
         event.preventDefault()
-
-        // const fd = new FormData()
-        // fd.append('grant_type', 'password')
-        // fd.append('username', this.userName.value)
-        // fd.append('password', this.pwd.value)
-        // this.props.logIn(fd)
-
-        this.props.logIn({
-            grant_type: 'password',
-            username: this.userName.value,
-            password: this.pwd.value
-        })
+        const credentials = `username=${this.userName.value}&password=${this.pwd.value}&grant_type=password`
+        this.props.logIn(credentials)
     }
 
     render = () => {
