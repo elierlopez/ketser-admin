@@ -20,7 +20,7 @@ class Login extends Component {
                 </FormGroup>
                 <FormGroup controlId="personLastName">
                     <label>PWD</label>
-                    <FormControl type="text" placeholder="pwd" ref={pwd => this.pwd = pwd} />
+                    <FormControl type="password" placeholder="pwd" ref={pwd => this.pwd = pwd} />
                 </FormGroup>
                 <Button variant="success" className="btn btn-primary" type="submit">SUBMIT</Button>
             </Form>

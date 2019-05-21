@@ -5,7 +5,9 @@ import PersonList from './Components/Persons/personsList'
 import { Home } from './Components/Home'
 import Login from './Components/Auth/logIn'
 import { BrowserRouter, Route, NavLink } from 'react-router-dom'
+import ProtectedRoute from './Components/ProtectedRoute'
 import logo from './logo.svg';
+
 
 class App extends Component {
   render() {
@@ -22,8 +24,8 @@ class App extends Component {
 
           <br></br>
           <Route path="/" exact component={Home} />
-          <Route path="/services" component={ServicesList} />
-          <Route path="/persons" component={PersonList} />
+          <ProtectedRoute path="/services" component={ServicesList} />
+          <ProtectedRoute path="/persons" component={PersonList} />
           <Route path="/Login" component={Login} />
 
         </div>
