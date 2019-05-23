@@ -2,16 +2,36 @@ import axios from 'axios'
 import * as types from './types'
 import * as url from './backendUrl'
 
+export const authStart = () => {
+    return {
+        type: types.GET_TOKEN_START
+    }
+}
+
+export const authFail = error => {
+    return {
+        type: types.GET_TOKEN_FAIL,
+        error: error
+    }
+}
+
+export const authSuccess = token => {
+    return {
+        type: types.GET_TOKEN_SUCCESS,
+        token: token
+    }
+}
+
 const getToken = credentials => {
     return dispatch => {
+        dispatch(authStart())
         return axios.post(url.GetToken, credentials)
             .then(response => {
-                dispatch({
-                    type: types.GET_TOKEN,
-                    token: response.data
-                })
+                dispatch(authSuccess(response.data))
             })
-            .catch(() => console.log(`$Issues calling ${url.GetToken}`))
+            .catch(err => {                
+                dispatch(authFail(err.response.data));
+            })
     }
 }
 

@@ -16,11 +16,11 @@ class Login extends Component {
             <Form onSubmit={this.manageLogin}>
                 <FormGroup controlId="personName">
                     <label>User Name</label>
-                    <FormControl type="text" placeholder="user name" ref={name => this.userName = name} />
+                    <FormControl type="text" placeholder="user name" defaultValue="reile18@icloud.com" ref={name => this.userName = name} />
                 </FormGroup>
                 <FormGroup controlId="personLastName">
                     <label>PWD</label>
-                    <FormControl type="password" placeholder="pwd" ref={pwd => this.pwd = pwd} />
+                    <FormControl type="password" placeholder="pwd" defaultValue="password" ref={pwd => this.pwd = pwd} />
                 </FormGroup>
                 <Button variant="success" className="btn btn-primary" type="submit">SUBMIT</Button>
             </Form>

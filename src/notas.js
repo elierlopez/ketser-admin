@@ -58,3 +58,9 @@ probablemente ese es el problema y no el cors
 
 */
 
+/* Miercoles 23 de mayo 2019 
+
+-Revisar bien la forma de usar el localStorage para almacenar el token y el expirationTime 
+como en el tutorial de udemy
+
+*/

@@ -1,0 +1,43 @@
+// GetToken - success answer
+{
+    "access_token": "NS70U6Ex-eNBl_VG8iHi_B4zuCU1yZuCS2pyCLTb78i67H1c4ntQYGEhmBS2pfljzbZZf9wpiF8JGbMcWa_D-A2L2pwRtVJz5GXXbukPDuqHL_MyPsY_dcOyZwXCE4zgvCDGtxEgh0J1fyoB4PyZgTBRMq940i98RddXvX7UNsQGdUOkaGmrfoahp3mzMKtZOuVHS3zWJ6Z_UcxVbbyo2Dn5oJrvojULVeccacN2hnLscAm_0S5Vezw2MBjM7sLz09LB7hqVoZ18bxooNCIIAIGgKUpvseTVxEXEiZH2GsgUl1UZF1UK8Nsk0McXNX3VRTvxzioEPIhPVI3U9P5YEQdzwMcm3KT-emgIdUWpWdoX_-hIC4VyBZ6Sm-3pcTlyXPMNBd4UHU30iuk1nM9cQRrr9Ia1TwRMREap1TPc6uhfjoi1J9vGAWdcMZ9Jx8UFdcBNarSD09uGLliPq4h-xRl2JWOgs8Pxx9CSM47TeIA",
+    "token_type": "bearer",
+    "expires_in": 1799,
+    "userName": "juanga8@gmail.com",
+    ".issued": "Sun, 28 Apr  2019 01:22:32 GMT",
+    ".expires": "Sun, 28 Apr 2019 01:52:32 GMT"
+}
+// GetToken - failed answer
+{
+    "error": "invalid_grant",
+    "error_description": "The user name or password is incorrect."
+}
+
+// Account/CreateUser - success answer
+{
+    "Email": "reile19@icloud.com",
+    "EmailConfirmed": false,
+    "PasswordHash": "AIZQQE1UxPsDvNqoDdl1/0pI/x4lln1a0C7GDrPHw+yaGgLXKp/4Tn7ZtFpQu81eOA==",
+    "SecurityStamp": "27546034-caa1-4b8a-a99b-f7590a6c02c2",
+    "PhoneNumber": null,
+    "PhoneNumberConfirmed": false,
+    "TwoFactorEnabled": false,
+    "LockoutEndDateUtc": null,
+    "LockoutEnabled": false,
+    "AccessFailedCount": 0,
+    "Roles": [],
+    "Claims": [],
+    "Logins": [],
+    "Id": "6cf85e79-3b6b-4b24-86a5-99392d4a9a38",
+    "UserName": "reile19@icloud.com"
+    }
+
+// Account/CreateUser - failed answer
+{
+    "Message": "The request is invalid.",
+    "ModelState": {
+        : [
+            "Name reile18@icloud.com is already taken."
+        ],
+    }
+}
