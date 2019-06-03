@@ -13,6 +13,8 @@ export default function (state = initialState, action) {
             return { ...state, token: action.token, error: null, loading: false }
         case actionType.GET_TOKEN_FAIL:
             return { ...state, token: null, error: action.error.error_description, loading: false }
+        case actionType.AUTH_LOGOUT:
+            return { ...state, token: null, loading: false }
         case actionType.CREATE_USER:
             return { ...state, user: action.user }
         default:

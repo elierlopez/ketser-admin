@@ -1,16 +1,24 @@
 import { connect } from 'react-redux'
 import React, { Component } from 'react';
+import { BrowserRouter, Route, NavLink, Switch, Redirect } from 'react-router-dom'
+
+// ketser assets
 import './App.css';
+import logo from './logo.svg'
+import * as authActions from './Actions/authActions'
+
+// ketser components
 import ServicesList from './Components/Services/servicesList'
 import PersonList from './Components/Persons/personsList'
 import { Home } from './Components/Home'
 import Login from './Components/Auth/logIn'
-import { BrowserRouter, Route, NavLink, Switch, Redirect } from 'react-router-dom'
-// import ProtectedRoute from './Components/ProtectedRoute'
-import logo from './logo.svg';
-
 
 class App extends Component {
+
+  componentDidMount() {
+    this.props.tryAutoLogin()
+  }
+
   routes = () => {
     // console.log(this.props.auth.token.userName)
     return this.props.isAuthenticated ?
@@ -50,4 +58,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(App) 
+const mapDispatchToProps = dispatch => {
+  return {
+    tryAutoLogin: () => dispatch(authActions.authCheckStatus())
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(App) 
