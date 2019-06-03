@@ -95,7 +95,8 @@ class PersonsList extends Component {
 
 const mapStateToProps = state => {
     return {
-        persons: state.persons
+        persons: state.persons,
+        authToken: state.auth.token // lets use it for calling protected methods in the backend 
     }
 }
 

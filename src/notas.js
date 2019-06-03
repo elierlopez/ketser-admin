@@ -64,3 +64,11 @@ probablemente ese es el problema y no el cors
 como en el tutorial de udemy
 
 */
+
+
+/* DOm 02 de Junio 2019 
+
+Lista la parte del auth
+Hay que mandar el token a todos los endpoints protejidos en el backend
+
+*/

@@ -20,7 +20,6 @@ class App extends Component {
   }
 
   routes = () => {
-    // console.log(this.props.auth.token.userName)
     return this.props.isAuthenticated ?
       <Switch>
         <Route path="/" exact component={Home} />
