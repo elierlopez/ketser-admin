@@ -72,3 +72,22 @@ Lista la parte del auth
 Hay que mandar el token a todos los endpoints protejidos en el backend
 
 */
+
+/* Miercoles 27 de Junio 2019
+
+Hacer que el routing me permita escribir el url BarProp
+es todo un desmadre tengo ya mucho tiempo atorado con esta mierda
+lo unico que me falta es leer este post:
+
+https://stackoverflow.com/questions/27928372/react-router-urls-dont-work-when-refreshing-or-writing-manually?rq=1
+
+y luego a la mierda a seguir con lo que sigue porque
+ya malgaste mucho 
+
+Siguiente paso:
+1: cargar los datos de los projectos en el grid
+2: al seleccionar un projecto mostrar todos sus quotes
+3: Poder crear un project
+4: Poder crear un quote
+
+*/

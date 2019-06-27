@@ -8,9 +8,16 @@ export const Home = () => {
             HOME
             <br />
             <br />
-            <NavLink to="/services">Services</NavLink>
+            <NavLink to={{
+                pathname: '/services',
+                hash: '#submit',
+                search: '?quick-submit=true'
+            }}>Services</NavLink>
             <br />
             <NavLink to="/persons" >Persons</NavLink>
+            <br />
+            <NavLink to="/projects" >Projects</NavLink>
+
         </div>
     )
 }

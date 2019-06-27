@@ -12,6 +12,7 @@ import ServicesList from './Components/Services/servicesList'
 import PersonList from './Components/Persons/personsList'
 import { Home } from './Components/Home'
 import Login from './Components/Auth/logIn'
+import ProjectList from './Components/Projects/projectList'
 
 class App extends Component {
 
@@ -25,7 +26,7 @@ class App extends Component {
         <Route path="/" exact component={Home} />
         <Route path="/services" component={ServicesList} />
         <Route path="/persons" component={PersonList} />
-        <Redirect to="/" />
+        <Route path="/projects" component={ProjectList} />
       </Switch>
       :
       <Switch>
@@ -37,6 +38,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
+
         <div className="App">
           <NavLink to="/">
             <header className="App-header">
@@ -46,8 +48,9 @@ class App extends Component {
           </NavLink>
           {this.routes()}
         </div>
+
       </BrowserRouter>
-    );
+    )
   }
 }
 
