@@ -24,7 +24,7 @@ class PersonsModal extends Component {
             ...this.props.person,
             FirstName: this.FirstName.value,
             LastName: this.LastName.value,
-            Deleted: this.Deleted.checked
+            Active: this.Active.checked
         }))
         this.props.handleSave(fd)
     }
@@ -59,12 +59,12 @@ class PersonsModal extends Component {
                                     <FormControl type="text" placeholder="Enter Last Name" defaultValue={person.LastName} ref={lastName => this.LastName = lastName} />
                                 </FormGroup>
                                 <FormCheck
-                                    id={'isDeleted'}
-                                    label={'Is Deleted'}
+                                    id={'isActive'}
+                                    label={'Is Ative'}
                                     type={'checkbox'}
                                     custom
-                                    defaultChecked={person.Deleted}
-                                    ref={Deleted => this.Deleted = Deleted} />
+                                    defaultChecked={person.Active}
+                                    ref={Active => this.Active = Active} />
 
                             </Modal.Body>
                             <Modal.Footer>

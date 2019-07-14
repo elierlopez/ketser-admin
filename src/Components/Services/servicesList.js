@@ -41,7 +41,7 @@ class AllServices extends Component {
         const fd = new FormData()
         fd.append('service', JSON.stringify({
             ...service,
-            Deleted: !service.Deleted
+            Active: !service.Active
         }))
         this.props.save(fd)
     }
@@ -55,7 +55,7 @@ class AllServices extends Component {
         fd.append('service', JSON.stringify({
             ...this.state.modalService,
             Name: this.NameInput.value,
-            Deleted: this.isDeletedInput.checked
+            Active: this.isActiveInput.checked
         }))
         this.props.save(fd)
         this.closeModalHandler()
@@ -117,12 +117,12 @@ class AllServices extends Component {
                                 <FormControl type="text" placeholder="Enter Service Name" defaultValue={this.state.modalService.Name} ref={NameInput => this.NameInput = NameInput} />
                             </FormGroup>
                             <Form.Check
-                                id={'isDeleted'}
-                                label={'Is Deleted'}
+                                id={'isActive'}
+                                label={'Is Active'}
                                 custom
                                 type={'checkbox'}
-                                ref={isDeleted => this.isDeletedInput = isDeleted} 
-                                defaultChecked={this.state.modalService.Deleted} />
+                                ref={Active => this.isActiveInput = Active} 
+                                defaultChecked={this.state.modalService.Active} />
 
                         </Modal.Body>
                         <Modal.Footer>

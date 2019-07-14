@@ -36,7 +36,7 @@ class PersonsList extends Component {
         const fd = new FormData()
         fd.append('person', JSON.stringify({
             ...person,
-            Deleted: !person.Deleted
+            Active: !person.Active
         }))
         this.props.save(fd)
     }

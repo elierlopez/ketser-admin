@@ -3,7 +3,7 @@ import { Image, Button } from 'react-bootstrap'
 // import { ServiceImagePath } from '../../Actions/backendUrl'
 
 class ServiceItem extends Component {
-    simpleRow = ({ Id, image = 'http://ketser.azurewebsites.net/images/services/60.jpeg', Name, Deleted, openModal, deactivateHandler }) => {
+    simpleRow = ({ Id, image = 'http://ketser.azurewebsites.net/images/services/60.jpeg', Name, Active, openModal, deactivateHandler }) => {
         return (
             <tr onDoubleClick={openModal} >
                 <td className="photo">
@@ -12,7 +12,7 @@ class ServiceItem extends Component {
                 </td>
                 <td className="names">{Name}</td>
                 <td>
-                    <Button onClick={deactivateHandler} variant={Deleted ? "success" : "danger"}>{Deleted ? "ACTIVAR" : "DESACTIVAR"}</Button>
+                    <Button onClick={deactivateHandler} variant={Active ? "danger" : "success"}>{Active ? "DESACTIVAR" : "ACTIVAR"}</Button>
                 </td>
             </tr>
         )
