@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { dateAndDefaultTimeFormat } from '../../Util/formaters'
 import { Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 // import { PersonImagePath } from '../../Actions/backendUrl'
 
 class ProjectItem extends Component {
@@ -11,9 +12,13 @@ class ProjectItem extends Component {
                 <td className="names">{Description}</td>
                 <td className="names">{dateAndDefaultTimeFormat(CreatedAt)}</td>
                 <td className="names">
-                    <Button variant="success">
-                        GO
-                    </Button>
+
+                    <Link to={'/Quotes/' + Id} >
+                        <Button variant="success">
+                            GO
+                        </Button>
+                    </Link>
+
                 </td>
             </tr>
         )

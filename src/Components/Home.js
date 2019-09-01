@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export const Home = () => {
     return (
@@ -8,16 +8,12 @@ export const Home = () => {
             HOME
             <br />
             <br />
-            <NavLink to={{
-                pathname: '/services',
-                hash: '#submit',
-                search: '?quick-submit=true'
-            }}>Services</NavLink>
+            <Link to='/services'>Services</Link>
             <br />
-            <NavLink to="/persons" >Persons</NavLink>
+            <Link to="/persons" >Persons</Link>
             <br />
-            <NavLink to="/projects" >Projects</NavLink>
+            <Link to="/projects" >Projects</Link>
 
-        </div>
+        </div >
     )
 }

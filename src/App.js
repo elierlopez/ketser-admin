@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import React, { Component } from 'react';
-import { BrowserRouter, Route, NavLink, Switch, Redirect } from 'react-router-dom'
+import { BrowserRouter, Route, Link, Switch, Redirect } from 'react-router-dom'
 
 // ketser assets
 import './App.css';
@@ -13,6 +13,7 @@ import PersonList from './Components/Persons/personsList'
 import { Home } from './Components/Home'
 import Login from './Components/Auth/logIn'
 import ProjectList from './Components/Projects/projectList'
+import projectQuoteList from './Components/Quotes/projectQuoteList'
 
 class App extends Component {
 
@@ -27,6 +28,7 @@ class App extends Component {
         <Route path="/services" component={ServicesList} />
         <Route path="/persons" component={PersonList} />
         <Route path="/projects" component={ProjectList} />
+        <Route path="/quotes/:projectId" component={projectQuoteList} />
       </Switch>
       :
       <Switch>
@@ -40,12 +42,12 @@ class App extends Component {
       <BrowserRouter>
 
         <div className="App">
-          <NavLink to="/">
+          <Link to="/">
             <header className="App-header">
               < img src={logo} className="App-logo" alt="logo" />
               <h1 className="App-title">KETSER ADMIN</h1>
             </header>
-          </NavLink>
+          </Link>
           {this.routes()}
         </div>
 
