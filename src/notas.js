@@ -89,5 +89,16 @@ Siguiente paso:
 2: al seleccionar un projecto mostrar todos sus quotes
 3: Poder crear un project
 4: Poder crear un quote
+*/
 
+/* Miercoles Aug 31 2019
+
+https://stackoverflow.com/questions/27928372/react-router-urls-dont-work-when-refreshing-or-writing-manually?rq=1
+
+Siguiente paso:
+0: Pasar el token a los metodos con [Auth] del backend [LISTO EN EL PROJECT ACTIONS, LOS SACO DEL LOCAL STORAGE]
+1: cargar los datos de los projectos en el grid [LISTO]
+2: al seleccionar un projecto mostrar todos sus quotes [LISTO]
+3: Poder crear un project
+4: Poder crear un quote
 */
