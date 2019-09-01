@@ -1,17 +1,20 @@
-import React, { Component } from 'react';
-import { Image } from 'react-bootstrap'
+import React, { Component } from 'react'
+import { dateAndDefaultTimeFormat } from '../../Util/formaters'
+import { Button } from 'react-bootstrap'
 // import { PersonImagePath } from '../../Actions/backendUrl'
 
 class ProjectItem extends Component {
-    simpleRow = ({ Id, image = 'http://ketser.azurewebsites.net/images/persons/1.jpg', Name, openModal }) => {
+    simpleRow = ({ Id, Service, Description, CreatedAt, openModal }) => {
         return (
             <tr onDoubleClick={openModal} >
-                <td className="photo">
-                    <Image src={image} />
-                    {/* <Image src={`${PersonImagePath}/${Id}.jpg`} height={35} rounded  /> */}
+                <td className="names">{Service.Name}</td>
+                <td className="names">{Description}</td>
+                <td className="names">{dateAndDefaultTimeFormat(CreatedAt)}</td>
+                <td className="names">
+                    <Button variant="success">
+                        GO
+                    </Button>
                 </td>
-                <td className="names">{Name}</td>
-                <td></td>
             </tr>
         )
     }

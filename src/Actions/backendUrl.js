@@ -3,7 +3,7 @@ export const RestUrl = `${KetserSiteUrl}/api`
 
 //Project
 export const SaveProject = `${RestUrl}/Project/Save`
-export const GetAllProjects = `${RestUrl}/Project/GetAll`
+export const GetAllProjects = `${RestUrl}/Project/GetProjectAllProjects`
 export const SaveProjectAttachments = `${RestUrl}/Project/Saveattachments`
 export const GetProjectQuotesByPersonId = `${RestUrl}/Project/GetProjectQuotes`
 

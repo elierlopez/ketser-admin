@@ -3,15 +3,17 @@ import * as types from './types'
 import * as url from './backendUrl'
 
 const replaceProjects = () => {
+    const access_token = localStorage.getItem('token')
+    const config = { headers: { Authorization: `Bearer ${access_token}` } };
     return dispatch => {
-        return axios.get(url.GetAllProjects)
+        return axios.get(url.GetAllProjects, config)
             .then(response => {
                 dispatch({
                     type: types.GET_PROJECTS,
                     projects: response.data
                 })
             })
-            .catch(() => console.log(`$Issues calling ${url.GetAllProjects}`))
+            .catch(err => console.log(`$Issues calling ${url.GetAllProjects} --> ${err}`))
     }
 }
 

@@ -4,10 +4,7 @@ import * as url from './backendUrl'
 
 const replaceServices = () => {
     return dispatch => {
-        var config = {
-            crossdomain: true
-        }
-        return axios.get(url.GetAllServices, config)
+        return axios.get(url.GetAllServices)
             .then(response => {
                 dispatch({
                     type: types.GET_SERVICES,

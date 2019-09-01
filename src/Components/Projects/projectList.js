@@ -42,10 +42,9 @@ class ProjectList extends Component {
             <Table striped bordered hover>
                 <thead>
                     <tr>
-                        <th>Image</th>
-                        <th>Name</th>
-                        <th>Last Name</th>
-                        <th></th>
+                        <th>Service</th>
+                        <th>Description</th>
+                        <th>Date</th>
                         <th></th>
                     </tr>
                 </thead>
@@ -63,7 +62,6 @@ class ProjectList extends Component {
                     key={proj.Id}
                     {...proj}
                     openModal={() => this.openModalHandler(proj)}
-                    deactivateHanlder={() => this.deactivateHandler(proj)}
                 />
             )
         })
@@ -74,11 +72,6 @@ class ProjectList extends Component {
             <div>
                 <hr />
                 {this.projectTable()}
-                {/* <PersonModal
-                    isModalOpen={this.state.isModalOpen}
-                    person={this.state.modalPerson}
-                    handleSave={this.handleSave}
-                    handleCloseModal={this.closeModalHandler} /> */}
             </div>
         )
     }
