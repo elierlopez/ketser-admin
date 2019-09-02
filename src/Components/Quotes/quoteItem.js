@@ -1,24 +1,19 @@
 import React, { Component } from 'react'
 import { dateAndDefaultTimeFormat } from '../../Util/formaters'
 import { Button } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
 // import { PersonImagePath } from '../../Actions/backendUrl'
 
-class ProjectItem extends Component {
-    simpleRow = ({ Id, Service, Description, CreatedAt, openModal }) => {
+class QuoteItem extends Component {
+    simpleRow = ({ Id, ProfessionalProfile, Price, CreatedAt, openModal }) => {
         return (
             <tr onDoubleClick={openModal} >
-                <td className="names">{Id} {Service.Name}</td>
-                <td className="names">{Description}</td>
+                <td className="names">{ProfessionalProfile.Person.FirstName} {ProfessionalProfile.Person.LastName}</td>
+                <td>{Price}</td>
                 <td className="names">{dateAndDefaultTimeFormat(CreatedAt)}</td>
                 <td className="names">
-
-                    <Link to={'/Quotes/' + Id} >
-                        <Button variant="success">
-                            GO
-                        </Button>
-                    </Link>
-
+                    <Button variant="danger">
+                        DELETE
+                    </Button>
                 </td>
             </tr>
         )
@@ -29,4 +24,4 @@ class ProjectItem extends Component {
     }
 }
 
-export default ProjectItem
+export default QuoteItem

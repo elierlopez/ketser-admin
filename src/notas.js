@@ -102,3 +102,19 @@ Siguiente paso:
 3: Poder crear un project
 4: Poder crear un quote
 */
+
+
+/* LUNES Aug 1 2019
+
+La pagina de los quotes ya esta lista 
+y deplsiega los quotes basado en el project ID
+Arregle el asunto de los vulnerabilites a traves de npm audit fix (pero aun hay vuknerabilities al parecer)
+por alfuna razon en el componentwillmount o el coimponentdidmount no puedo setear el estado con setState, no lo guarda
+Hay que averiguar porque
+
+Siguiente paso:
+3: Poder crear un project
+4: Poder crear un quote
+5: deployar el sitio
+6: poder crear persons
+*/
