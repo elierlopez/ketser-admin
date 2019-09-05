@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Table } from 'react-bootstrap'
 import { saveProject } from '../../Actions/projectActions'
 import QuoteItem from '../Quotes/quoteItem'
+import { projectForm } from '../Quotes/projectForm'
 
 class projectQuoteList extends Component {
 
@@ -58,6 +59,8 @@ class projectQuoteList extends Component {
     render() {
         return (
             <div>
+                <hr />
+                {projectForm()}
                 <hr />
                 {this.quoteTable()}
             </div>
