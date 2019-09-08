@@ -16,32 +16,39 @@ class projectQuoteList extends Component {
         }
     }
 
-    componentDidMount() {
-        // console.log(this.props.match.params.projectId)
-        // console.log(this.project)
+    onProjectUpdate = (project) => {
+        console.log(project)
     }
 
-    quoteTable = () => {
+    renderContent = () => {
         const index = this.props.projects.findIndex(i => i.Id == this.props.match.params.projectId)
         const proj = this.props.projects[index]
         return (
-            proj.Quotes.length > 0
-                ?
-                <Table striped bordered hover>
-                    <thead>
-                        <tr>
-                            <th>Professional</th>
-                            <th>Price</th>
-                            <th>Date</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {this.renderQuoteItems(proj.Quotes)}
-                    </tbody>
-                </Table>
-                :
-                <h5>NO QUOTES YET</h5>
+            <React.Fragment>
+
+                {projectForm(proj, this.onProjectUpdate)}
+                <hr />
+                
+                {
+                    proj.Quotes.length > 0
+                        ?
+                        <Table striped bordered hover>
+                            <thead>
+                                <tr>
+                                    <th>Professional</th>
+                                    <th>Price</th>
+                                    <th>Date</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {this.renderQuoteItems(proj.Quotes)}
+                            </tbody>
+                        </Table>
+                        :
+                        <h5>NO QUOTES YET</h5>
+                }
+            </React.Fragment>
         );
     }
 
@@ -60,9 +67,7 @@ class projectQuoteList extends Component {
         return (
             <div>
                 <hr />
-                {projectForm()}
-                <hr />
-                {this.quoteTable()}
+                {this.renderContent()}
             </div>
         )
     }
