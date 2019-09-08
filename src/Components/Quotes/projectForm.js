@@ -72,7 +72,11 @@ export const projectForm = (project, onProjectUpdate) => {
                     <Form.Label>Status</Form.Label>
                 </Col>
                 <Col>
-                    <Form.Control as="select" defaultValue={project.Status}>
+                    <Form.Control
+                        as="select"
+                        defaultValue={project.Status}
+                        onChange={e => { project.Status = e.target.value  }} >
+
                         {Object.entries(projectStatus).map(entry => {
                             return (
                                 <option
