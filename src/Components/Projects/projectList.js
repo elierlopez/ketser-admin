@@ -44,7 +44,7 @@ class ProjectList extends Component {
                     <tr>
                         <th>Service</th>
                         <th>Description</th>
-                        <th>Date</th>
+                        <th>Created At</th>
                         <th></th>
                     </tr>
                 </thead>

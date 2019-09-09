@@ -1,8 +1,11 @@
 import React from 'react'
 import { Form, Button, Row, Col, Container } from 'react-bootstrap'
 
-import { dateAndDefaultTimeFormat } from '../../Util/formaters'
 import { projectStatus } from '../../Constants/projectStatus';
+
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 
 export const projectForm = (project, onProjectUpdate) => {
     console.log(Object.entries(projectStatus))
@@ -23,10 +26,17 @@ export const projectForm = (project, onProjectUpdate) => {
                 <Col sm={3}>
                     <Form.Label>Creation Date</Form.Label>
                 </Col>
-                <Col sm={4}>
-                    <Form.Control type="text" defaultValue={dateAndDefaultTimeFormat(project.CreatedAt)} readOnly />
-                </Col>
                 <Col sm={5}>
+                    <DatePicker
+                        selected={new Date(project.CreatedAt)}
+                        onChange={date => project.CreatedAt = new Date (date)}
+                        showTimeSelect
+                        timeFormat="HH:mm"
+                        timeIntervals={15}
+                        dateFormat="dd/MM/yy hh:mm aa"
+                    />
+                </Col>
+                <Col sm={4}>
                 </Col>
             </Row>
 
@@ -34,10 +44,17 @@ export const projectForm = (project, onProjectUpdate) => {
                 <Col sm={3}>
                     <Form.Label>Start Date</Form.Label>
                 </Col>
-                <Col sm={4}>
-                    <Form.Control type="text" defaultValue={dateAndDefaultTimeFormat(project.StartDate)} readOnly />
-                </Col>
                 <Col sm={5}>
+                    <DatePicker
+                        selected={new Date(project.StartDate)}
+                        onChange={date => project.StartDate = date}
+                        showTimeSelect
+                        timeFormat="HH:mm"
+                        timeIntervals={15}
+                        dateFormat="dd/MM/yy hh:mm aa"
+                    />
+                </Col>
+                <Col sm={4}>
                 </Col>
             </Row>
 
@@ -75,7 +92,7 @@ export const projectForm = (project, onProjectUpdate) => {
                     <Form.Control
                         as="select"
                         defaultValue={project.Status}
-                        onChange={e => { project.Status = e.target.value  }} >
+                        onChange={e => { project.Status = e.target.value }} >
 
                         {Object.entries(projectStatus).map(entry => {
                             return (

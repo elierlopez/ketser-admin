@@ -37,7 +37,7 @@ class projectQuoteList extends Component {
                                 <tr>
                                     <th>Professional</th>
                                     <th>Price</th>
-                                    <th>Date</th>
+                                    <th>Created At</th>
                                     <th></th>
                                 </tr>
                             </thead>
