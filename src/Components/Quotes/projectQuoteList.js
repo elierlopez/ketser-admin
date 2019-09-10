@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Table } from 'react-bootstrap'
 import { saveProject } from '../../Actions/projectActions'
 import QuoteItem from '../Quotes/quoteItem'
-import { projectForm } from '../Quotes/projectForm'
+import ProjectForm from '../Quotes/projectForm'
 
 class projectQuoteList extends Component {
 
@@ -26,9 +26,12 @@ class projectQuoteList extends Component {
         return (
             <React.Fragment>
 
-                {projectForm(proj, this.onProjectUpdate)}
+                <ProjectForm
+                    project={proj}
+                    onProjectUpdate={this.onProjectUpdate} />
+                    
                 <hr />
-                
+
                 {
                     proj.Quotes.length > 0
                         ?
