@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import { Form, Button, Row, Col, Container } from 'react-bootstrap'
-
-import { projectStatus } from '../../Constants/projectStatus';
-
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+import { projectStatus } from '../../Constants/projectStatus';
+import { dateAndDefaultTimeFormat } from '../../Util/formaters'
 
 class ProjectForm extends Component {
 
@@ -13,32 +12,30 @@ class ProjectForm extends Component {
         super(props)
         this.state = {
             project: props.project,
-            startDate: new Date(props.project.StartDate),
-            createdAt: new Date(props.project.CreatedAt)
+            startDate: new Date(dateAndDefaultTimeFormat(props.project.StartDate))
         }
-    }
-
-    setCreatedAt = createdAt => {
-        this.setState({
-            createdAt: createdAt
-        })
-        //TODO: set it in the project as well
     }
 
     setStartDate = startDate => {
         this.setState({
             startDate: startDate
         })
-        //TODO: set it in the project as well
+
+        this.setState({
+            project: {
+                ...this.state.project,
+                StartDate: startDate
+            }
+        })
     }
 
     hanldeProjectUpdate = proj => {
         this.props.onProjectUpdate(proj)
+        // console.log(proj)
     }
 
     render() {
         const { project } = this.state
-        console.log(project)
         return (
             <Container >
                 <Row>
@@ -56,17 +53,10 @@ class ProjectForm extends Component {
                     <Col sm={3}>
                         <Form.Label>Creation Date</Form.Label>
                     </Col>
-                    <Col sm={5}>
-                        <DatePicker
-                            selected={this.state.createdAt}
-                            onChange={this.setCreatedAt}
-                            showTimeSelthis
-                            timeFormat="HH:mm"
-                            timeIntervals={15}
-                            dateFormat="dd/MM/yy"
-                        />
-                    </Col>
                     <Col sm={4}>
+                        <Form.Control type="text" defaultValue={dateAndDefaultTimeFormat(project.CreatedAt)} readOnly />
+                    </Col>
+                    <Col sm={3}>
                     </Col>
                 </Row>
 
@@ -142,7 +132,7 @@ class ProjectForm extends Component {
                 </Row>
                 <Row>
                     <Col sm={12}>
-                        <Button variant="primary" type="button" onClick={this.hanldeProjectUpdate}>
+                        <Button variant="primary" type="button" onClick={() => this.hanldeProjectUpdate(project)}>
                             SAVE CHANGES
                     </Button>
                     </Col>

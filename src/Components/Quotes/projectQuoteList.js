@@ -17,7 +17,7 @@ class projectQuoteList extends Component {
     }
 
     onProjectUpdate = (project) => {
-        console.log(project)
+        this.props.updateProject(project)
     }
 
     renderContent = () => {
@@ -84,7 +84,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        save: project => {
+        updateProject: project => {
             dispatch(saveProject(project))
         }
     }
