@@ -118,3 +118,21 @@ Siguiente paso:
 5: deployar el sitio
 6: poder crear persons
 */
+
+/* Miercoles Sep 11 2019
+
+Hoy termine el update project en el componente projectForm.
+No pude usar el react-datepicker en un stateless component, despues de mis prurbas 
+supongo supongo porque su metodo onchange
+depende de un re-render para actualizar el valor que despliega
+
+Otra observacion es que cuando el valor viene del backend 
+para desplegarlo en el react-datepicker hay que convertirlo de UTC a local time
+para esto use el moment en mi funcion dateAndDefaultTimeFormat
+Pero para mandar la fecha del UI al backend no es necesario convertirla a UTC
+sino que ya va en formato UTC
+
+Siguiente paso:
+3: Agregar estilo al projectForm 
+y terminar pendientes del LUNES Aug 1 2019
+*/

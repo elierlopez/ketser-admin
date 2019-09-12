@@ -31,7 +31,6 @@ class ProjectForm extends Component {
 
     hanldeProjectUpdate = proj => {
         this.props.onProjectUpdate(proj)
-        // console.log(proj)
     }
 
     render() {
