@@ -5,6 +5,7 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import { projectStatus } from '../../Constants/projectStatus';
 import { dateAndDefaultTimeFormat } from '../../Util/formaters'
+import './index.css'
 
 class ProjectForm extends Component {
 
@@ -65,6 +66,8 @@ class ProjectForm extends Component {
                     </Col>
                     <Col sm={5}>
                         <DatePicker
+                            id="stControl"
+                            className="form-control"
                             selected={this.state.startDate}
                             onChange={this.setStartDate}
                             showTimeSelect
@@ -77,18 +80,25 @@ class ProjectForm extends Component {
                     </Col>
                 </Row>
 
-
                 <Row>
                     <Col sm={3}>
                         <Form.Label>Location</Form.Label>
                     </Col>
-                    <Col sm={3}>
+                    <Col sm={4}>
                         <Form.Control type="text" defaultValue={project.Location} placeholder="Location" />
                     </Col>
+                    <Col sm={5}>
+                    </Col>
+                </Row>
+
+                <Row>
                     <Col sm={3}>
+                        <Form.Label>Zip Code</Form.Label>
+                    </Col>
+                    <Col sm={4}>
                         <Form.Control type="text" defaultValue={project.ZipCode} placeholder="Zip Code" />
                     </Col>
-                    <Col sm={3}>
+                    <Col sm={5}>
                     </Col>
                 </Row>
 

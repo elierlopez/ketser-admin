@@ -136,3 +136,6 @@ Siguiente paso:
 3: Agregar estilo al projectForm 
 y terminar pendientes del LUNES Aug 1 2019
 */
+
+// poner un control por linea 
+// (lap roxima vez usare forms y form groups para ordenar los controles)

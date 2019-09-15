@@ -4,6 +4,7 @@ import { Table } from 'react-bootstrap'
 import { saveProject } from '../../Actions/projectActions'
 import QuoteItem from '../Quotes/quoteItem'
 import ProjectForm from '../Quotes/projectForm'
+import CreateQuote from '../Quotes/createQuote'
 
 class projectQuoteList extends Component {
 
@@ -25,6 +26,8 @@ class projectQuoteList extends Component {
         const proj = this.props.projects[index]
         return (
             <React.Fragment>
+
+                <CreateQuote/>
 
                 <ProjectForm
                     project={proj}
