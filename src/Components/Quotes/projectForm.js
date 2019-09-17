@@ -143,7 +143,7 @@ class ProjectForm extends Component {
                     <Col sm={12}>
                         <Button variant="primary" type="button" onClick={() => this.hanldeProjectUpdate(project)}>
                             SAVE CHANGES
-                    </Button>
+                        </Button>
                     </Col>
                 </Row>
             </Container >

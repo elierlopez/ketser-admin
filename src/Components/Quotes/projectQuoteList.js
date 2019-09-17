@@ -1,24 +1,55 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Table } from 'react-bootstrap'
+import { Table, Button } from 'react-bootstrap'
 import { saveProject } from '../../Actions/projectActions'
 import QuoteItem from '../Quotes/quoteItem'
 import ProjectForm from '../Quotes/projectForm'
 import CreateQuote from '../Quotes/createQuote'
+import { modalService } from '../Modal'
 
 class projectQuoteList extends Component {
 
     constructor() {
         super()
         this.state = {
-            projectId: 0,
-            isModalOpen: false,
-            selectedProject: {}
+            projectId: 0
         }
     }
 
-    onProjectUpdate = (project) => {
+    updateProject = (project) => {
         this.props.updateProject(project)
+    }
+
+    addNewQuote = newQuote => {
+        console.log(newQuote)
+        modalService.close()
+    }
+
+    updateQuoteValue = quote => {
+        console.log(quote)
+    }
+
+    showModal = () => {
+
+        const actions =
+            <React.Fragment>
+                <Button variant="warning" onClick={() => modalService.close()}>
+                    CANCEL
+                </Button>
+                <Button variant="success" onClick={this.addNewQuote}>
+                    SAVE
+                </Button>
+            </React.Fragment>
+
+        modalService.show({
+            hasTitle: true,
+            title: "ADD QUOTE",
+            body: <CreateQuote
+                projectId={this.props.match.params.projectId}
+                updateQuoteValue={this.updateQuoteValue} />,
+            actions,
+            show: true
+        })
     }
 
     renderContent = () => {
@@ -27,13 +58,15 @@ class projectQuoteList extends Component {
         return (
             <React.Fragment>
 
-                <CreateQuote/>
-
                 <ProjectForm
                     project={proj}
-                    onProjectUpdate={this.onProjectUpdate} />
-                    
+                    onProjectUpdate={this.updateProject} />
+
                 <hr />
+
+                <Button onClick={this.showModal}>
+                    ADD QUOTE
+                </Button>
 
                 {
                     proj.Quotes.length > 0

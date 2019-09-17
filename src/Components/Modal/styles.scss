@@ -1,0 +1,122 @@
+// @import "/src/assets/scss/colors.scss";
+
+.auto-dialog {
+  width: auto !important;
+  max-width: 80%;
+}
+
+.small-dialog {
+  width: 500px !important;
+}
+
+.medium-dialog {
+  width: 650px !important;
+}
+
+.modal-xs {
+  width: 450px !important;
+  min-width: 450px !important;
+}
+
+.modal-sm {
+  min-width: 600px !important;
+  width: 1000px !important;
+}
+.modal-md {
+  min-width: 800px !important;
+  width: 1000px !important;
+}
+.modal-xl {
+  min-width: 1000px !important;
+  width: 1000px !important;
+  background: blue;
+}
+
+.modal-xxl {
+  min-width: 1130px !important;
+  width: 1130px !important;
+  overflow-y: initial !important;
+}
+
+.modal-backdrop {
+  background: #000;
+  opacity: 0.8;
+}
+
+.modal-backdrop + div div div {
+  -webkit-border-radius: 0px !important;
+  -moz-border-radius: 0px !important;
+  border-radius: 0px !important;
+}
+
+.title {
+  line-height: 1;
+  margin: 20px 30px 0px 30px;
+  width: auto;
+  div {
+    float: left;
+  }
+  button {
+    position: absolute;
+    right: 20px;
+    top: 0px;
+  }
+  button span {
+    font-size: 35px;
+    font-weight: normal;
+  }
+}
+
+.body {
+  margin: 0 30px 20px 30px;
+  padding-bottom: 20px;
+  //border-bottom: solid 1px $border-light;
+  white-space: normal;
+}
+
+.body-xxl {
+  margin: 0 30px 20px 30px;
+  padding-bottom: 20px;
+  //border-bottom: solid 1px $border-light;
+  white-space: normal;
+  max-height: calc(100vh - 280px);
+  overflow-y: auto;
+}
+
+.body-no-footer {
+  margin: 0 30px 30px 30px;
+  //border-bottom: solid 1px $border-light;
+  white-space: normal;
+}
+
+.body-xxl-no-footer {
+  margin: 0 30px 30px 30px;
+  //border-bottom: solid 1px $border-light;
+  white-space: normal;
+  max-height: calc(100vh - 280px);
+  overflow-y: auto;
+}
+
+.footer {
+  margin: 0px 30px 30px 30px;
+  padding-top: 30px;
+  text-align: right;
+  border-top: solid 1px #dad8d7;
+  button {
+    margin-right: 15px;
+  }
+}
+
+.evidence-files-modal {
+  margin: 0px 0px 15px 0px;
+  padding: 10px;
+  background-color: #333 !important;
+  color: white;
+}
+.margin-left {
+  margin-left: 10px !important;
+}
+
+.content-scroll {
+  overflow: auto;
+}

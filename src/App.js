@@ -14,6 +14,7 @@ import { Home } from './Components/Home'
 import Login from './Components/Auth/logIn'
 import ProjectList from './Components/Projects/projectList'
 import projectQuoteList from './Components/Quotes/projectQuoteList'
+import { CustomModal } from './Components/Modal';
 
 class App extends Component {
 
@@ -41,15 +42,18 @@ class App extends Component {
     return (
       <BrowserRouter>
 
-        <div className="App">
-          <Link to="/">
-            <header className="App-header">
-              < img src={logo} className="App-logo" alt="logo" />
-              <h1 className="App-title">KETSER ADMIN</h1>
-            </header>
-          </Link>
-          {this.routes()}
-        </div>
+        <React.Fragment>
+          <div className="App">
+            <Link to="/">
+              <header className="App-header">
+                < img src={logo} className="App-logo" alt="logo" />
+                <h1 className="App-title">KETSER ADMIN</h1>
+              </header>
+            </Link>
+            {this.routes()}
+          </div>
+          <CustomModal />
+        </React.Fragment>
 
       </BrowserRouter>
     )

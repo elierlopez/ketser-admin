@@ -29,7 +29,8 @@ class ProjectList extends Component {
     }
 
     componentDidMount() {
-        this.props.load()
+        if (this.props.projects.length == 0)
+            this.props.load()
     }
 
     handleSave = project => {
