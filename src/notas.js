@@ -139,3 +139,15 @@ y terminar pendientes del LUNES Aug 1 2019
 
 // poner un control por linea 
 // (lap roxima vez usare forms y form groups para ordenar los controles)
+
+/* Martes Sep 17 2019
+
+Usar el modal service no es buena idea 
+ya que los actions y el body se insertan por separado
+pero al usar forms para salvar modelos tuve que sacar el modelo 
+atravez del onchange de los controles. Revisar createQuote.js
+talvez la proxima vex use un Modal normal, como en el caso del personModal.js
+Y usar un form y los buttons en el mismo archivo.js 
+y manejar las validaciones y todo alli mismo 
+
+*/
