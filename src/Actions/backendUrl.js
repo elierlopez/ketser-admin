@@ -7,6 +7,9 @@ export const GetAllProjects = `${RestUrl}/Project/GetProjectAllProjects`
 export const SaveProjectAttachments = `${RestUrl}/Project/Saveattachments`
 export const GetProjectQuotesByPersonId = `${RestUrl}/Project/GetProjectQuotes`
 
+//Quote
+export const SaveQuote = `${RestUrl}/Quote/Save`
+
 //Person
 export const GetAllPersons = `${RestUrl}/Person/GetAll?includeInactives=true`
 export const GetPersonByDeviceId = `${RestUrl}/Person/GetByDeviceCode`
