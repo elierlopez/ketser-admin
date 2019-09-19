@@ -4,7 +4,7 @@ export const NotFoundPage = () => {
     return (
         <div className="App">
             <br />
-            ESTA PAGINA NO ESTA DISPONIBLE
+            ESTA PAGINA NO ESTA DISPONIBLE O NO EXISTE
         </div>
     )
 }

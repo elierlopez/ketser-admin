@@ -150,4 +150,6 @@ talvez la proxima vex use un Modal normal, como en el caso del personModal.js
 Y usar un form y los buttons en el mismo archivo.js 
 y manejar las validaciones y todo alli mismo 
 
+para el protected routes
+https://medium.com/@tomlarge/private-routes-with-react-router-dom-28e9f40c7146
 */

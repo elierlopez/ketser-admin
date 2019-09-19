@@ -15,6 +15,8 @@ import Login from './Components/Auth/logIn'
 import ProjectList from './Components/Projects/projectList'
 import projectQuoteList from './Components/Quotes/projectQuoteList'
 import { CustomModal } from './Components/Modal';
+import { ProtectedRoute, UnlogedRoute } from "./CustomRoutes";
+import { NotFoundPage } from './Components/NotFoundPage'
 
 class App extends Component {
 
@@ -23,20 +25,19 @@ class App extends Component {
   }
 
   routes = () => {
-    return this.props.isAuthenticated ?
+    return (
       <Switch>
-        <Route path="/" exact component={Home} />
-        <Route path="/services" component={ServicesList} />
-        <Route path="/persons" component={PersonList} />
-        <Route path="/projects" component={ProjectList} />
-        <Route path="/quotes/:projectId" component={projectQuoteList} />
+        <UnlogedRoute path="/login" exact component={Login} />
+        <ProtectedRoute path="/" exact component={Home} />
+        <ProtectedRoute path="/services" component={ServicesList} />
+        <ProtectedRoute path="/persons" component={PersonList} />
+        <ProtectedRoute path="/projects" component={ProjectList} />
+        <ProtectedRoute path="/quotes/:projectId" component={projectQuoteList} />
+        <Route path="*" component={NotFoundPage} />
       </Switch>
-      :
-      <Switch>
-        <Route path="/" exact component={Login} />
-        <Redirect to="/" />
-      </Switch>
+    )
   }
+
 
   render() {
     return (
@@ -47,7 +48,7 @@ class App extends Component {
             <Link to="/">
               <header className="App-header">
                 < img src={logo} className="App-logo" alt="logo" />
-                <h1 className="App-title">KETSER ADMIN</h1>
+                <h1 className="App-title">ADMIN</h1>
               </header>
             </Link>
             {this.routes()}

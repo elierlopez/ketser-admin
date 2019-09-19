@@ -1,12 +1,11 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
-// UNUSED
- 
-const ProtectedRoute = ({ component: Component, ...rest }) => (
+
+export const ProtectedRoute = ({ component: Component, ...rest }) => (
 
     <Route {...rest}
         render={props => {
-            return false
+            localStorage.getItem("token")
                 ?
                 <Component {...props} />
                 :
@@ -17,5 +16,3 @@ const ProtectedRoute = ({ component: Component, ...rest }) => (
         }
         } />
 )
-
-export default ProtectedRoute
