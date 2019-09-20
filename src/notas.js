@@ -153,3 +153,20 @@ y manejar las validaciones y todo alli mismo
 para el protected routes
 https://medium.com/@tomlarge/private-routes-with-react-router-dom-28e9f40c7146
 */
+
+
+/*
+  Jueves Sep 19 2019
+
+  La sugerencia del Misa entorno a crear una propiedad isINitialized en el Store
+  ya que el ComponentDidMount ocurre despues del Render
+  y en el App.js el render es el que define el switch con todos mis routes
+
+  Ahora, en el componentDIdMount es donde llamo al tryAUtoLogin; que verifica si el token ya se creo
+  y en el render es donde defino el Switch con todos mis routes
+  pero, los routes que tengo tienen dependencia del State.token; para ver si se permite ir a la ruta o no
+
+  Por lo tanto necesito que un prop isInitialized para renderizar los routes solo despues de que 
+  la tryAUtoLogin ya se haya ejecutado y se haya determonado si hay i no token  
+ 
+ */

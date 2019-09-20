@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Link, Switch, Redirect } from 'react-router-dom'
+import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
 
 // ketser assets
 import './App.css';
@@ -15,7 +15,7 @@ import Login from './Components/Auth/logIn'
 import ProjectList from './Components/Projects/projectList'
 import projectQuoteList from './Components/Quotes/projectQuoteList'
 import { CustomModal } from './Components/Modal';
-import { ProtectedRoute, UnlogedRoute } from "./CustomRoutes";
+import { AuthorizedRoute, NonAuthorizedRoute } from "./RouteGuards";
 import { NotFoundPage } from './Components/NotFoundPage'
 
 class App extends Component {
@@ -26,15 +26,19 @@ class App extends Component {
 
   routes = () => {
     return (
-      <Switch>
-        <UnlogedRoute path="/login" exact component={Login} />
-        <ProtectedRoute path="/" exact component={Home} />
-        <ProtectedRoute path="/services" component={ServicesList} />
-        <ProtectedRoute path="/persons" component={PersonList} />
-        <ProtectedRoute path="/projects" component={ProjectList} />
-        <ProtectedRoute path="/quotes/:projectId" component={projectQuoteList} />
-        <Route path="*" component={NotFoundPage} />
-      </Switch>
+      this.props.isInitialized ?
+        <Switch>
+          <NonAuthorizedRoute path="/login" exact component={Login} />
+
+          <AuthorizedRoute path="/" exact component={Home} />
+          <AuthorizedRoute path="/services" component={ServicesList} />
+          <AuthorizedRoute path="/persons" component={PersonList} />
+          <AuthorizedRoute path="/projects" component={ProjectList} />
+          <AuthorizedRoute path="/quotes/:projectId" component={projectQuoteList} />
+          <Route path="*" component={NotFoundPage} />
+        </Switch>
+        :
+        <h3>Loading ma fren ..</h3>  //shall be a spinner.
     )
   }
 
@@ -63,7 +67,8 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    isAuthenticated: state.auth.token !== null
+    isAuthenticated: state.auth.token !== null,
+    isInitialized: state.app.isInitialized
   }
 }
 

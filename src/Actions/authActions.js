@@ -31,6 +31,13 @@ const authLogOut = () => {
     }
 }
 
+const setAppStatus = status => {
+    return {
+        type: types.SET_APP_STATUS,
+        isInitialized: status
+    }
+}
+
 // ----------------------------------------------------------
 // local functions ------------------------------------------
 const setAuthTimeout = expirationTime => {
@@ -57,6 +64,8 @@ export const authCheckStatus = () => {
         else {
             dispatch(authLogOut())
         }
+
+        dispatch(setAppStatus(true))
     }
 }
 
