@@ -85,7 +85,9 @@ class ProjectForm extends Component {
                         <Form.Label>Location</Form.Label>
                     </Col>
                     <Col sm={4}>
-                        <Form.Control type="text" defaultValue={project.Location} placeholder="Location" />
+                        <Form.Control type="text"
+                         defaultValue={project.Location} placeholder="Location"
+                         onChange={e => { project.Location = e.target.value }} />
                     </Col>
                     <Col sm={5}>
                     </Col>
@@ -96,7 +98,11 @@ class ProjectForm extends Component {
                         <Form.Label>Zip Code</Form.Label>
                     </Col>
                     <Col sm={4}>
-                        <Form.Control type="text" defaultValue={project.ZipCode} placeholder="Zip Code" />
+                        <Form.Control type="text" 
+                        defaultValue={project.ZipCode} 
+                        placeholder="Zip Code" 
+                        onChange={e => { project.ZipCode = e.target.value }} />
+
                     </Col>
                     <Col sm={5}>
                     </Col>
