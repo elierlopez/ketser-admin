@@ -19,15 +19,26 @@ class CreateQuote extends React.Component {
         }
     }
 
+    /*
+        componentDidMount occurs only once.
+        Even if the props are changed by an action execution as getProfessionals
+        this method wont be executed again. Thats why I need to intercept such props update event 
+        in componentDidUpdate which is executed either by props change or state update event 
+    */
     componentDidMount() {
-
-        console.log('props first')
-        console.log(this.props.professionals)
-        console.log(this.state.professionals)
-
         if (this.state.professionals.length == 0)
             this.props.getProfessionals()
-        else
+    }
+
+    /*
+        Its a best practice to read the props directly from props (in render method)
+        instead of copying them to the state. 
+        At least some kind of processing/transformation should be aplied to such props.
+        This time I will keep it like this for didcative purposes only  
+     */
+    componentDidUpdate(prevProps, prevState) {
+
+        if (prevState.professionals.length == 0 && this.props.professionals.length != 0)
             this.setState({ professionals: this.props.professionals })
     }
 
