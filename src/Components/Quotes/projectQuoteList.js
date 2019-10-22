@@ -55,7 +55,7 @@ class projectQuoteList extends Component {
     }
 
     renderContent = () => {
-        const index = this.props.projects.findIndex(i => i.Id == this.props.match.params.projectId)
+        const index = this.props.projects.findIndex(i => i.Id == this.state.projectId)
         const proj = this.props.projects[index]
         return (
             <React.Fragment>
