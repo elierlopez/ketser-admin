@@ -6,27 +6,29 @@ import QuoteItem from '../Quotes/quoteItem'
 import ProjectForm from '../Quotes/projectForm'
 import CreateQuote from '../Quotes/createQuote'
 import { modalService } from '../Modal'
+import { addQuote } from '../../Actions/quoteActions'
 
 class projectQuoteList extends Component {
 
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
-            projectId: 0
+            projectId: props.match.params.projectId,
+            modalQuote: {}
         }
     }
 
-    updateProject = (project) => {
+    updateProject = project => {
         this.props.updateProject(project)
     }
 
-    addNewQuote = newQuote => {
-        console.log(newQuote)
+    addNewQuote = () => {
+        this.props.addQuote(this.state.modalQuote)
         modalService.close()
     }
 
     updateQuoteValue = quote => {
-        console.log(quote)
+        this.setState({ modalQuote: quote })
     }
 
     showModal = () => {
@@ -122,6 +124,9 @@ const mapDispatchToProps = dispatch => {
     return {
         updateProject: project => {
             dispatch(saveProject(project))
+        },
+        addQuote: quote => {
+            dispatch(addQuote(quote))
         }
     }
 }

@@ -17,6 +17,9 @@ export const SavePerson = `${RestUrl}/Person/SaveProfile`
 export const SavePersonProfileImage = `${RestUrl}/Person/SavePersonProfileImage`
 export const PersonImagePath = `${KetserSiteUrl}/Images/Persons`
 
+//Professional
+export const GetProfessionals = `${RestUrl}/ProfessionalProfile/GetProfiles`
+
 //Services
 export const GetCategorizedServices = `${RestUrl}/Service/GetCategorizedServices`
 export const GetAllServices = `${RestUrl}/Service/GetAll?includeInactives=true`

@@ -7,9 +7,19 @@ export const SAVE_SERVICE = 'SAVE_SERVICE'
 export const GET_PERSONS = 'GET_PERSONS'
 export const SAVE_PERSON = 'SAVE_PERSON'
 
+//professionals
+export const GET_PROFESSIONALS_START = 'GET_PROFESSIONALS_START'
+export const GET_PROFESSIONALS_SUCCESS = 'GET_PROFESSIONALS_SUCCESS'
+export const SAVE_PROFESSIONAL = 'SAVE_PROFESSIONAL'
+
 //projects
 export const GET_PROJECTS = 'GET_PROJECTS'
 export const SAVE_PROJECT = 'SAVE_PROJECT'
+
+//quotes
+export const SAVE_QUOTE = 'SAVE_QUOTE'
+export const ADD_QUOTE_START = 'ADD_QUOTE_START'
+export const ADD_QUOTE_SUCCESS = 'ADD_QUOTE_SUCCESS'
 
 // Authentication
 export const GET_TOKEN_START = 'GET_TOKEN_START'

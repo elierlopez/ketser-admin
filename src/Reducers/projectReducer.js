@@ -12,5 +12,12 @@ export default function (state = [], action) {
             return stateCopy
         }
     }
+    else if (action.type === actionType.ADD_QUOTE_SUCCESS) {
+        const stateCopy = [...state]
+        const indexProj = state.findIndex(i => i.Id === action.quote.ProjectId)
+        stateCopy[indexProj].Quotes = [...stateCopy[indexProj].Quotes, action.quote]
+        return stateCopy
+    }
+
     return state
 }

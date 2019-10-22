@@ -1,10 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Form, Row, Col } from 'react-bootstrap'
+import { connect } from 'react-redux'
 // import { dateAndDefaultTimeFormat } from '../../Util/formaters'
 import { quote } from '../../Constants/modelDefaults'
 import './index.css'
+import { loadProfessionals } from '../../Actions/professionalActions'
 
-class CreateQuote extends Component {
+class CreateQuote extends React.Component {
 
     constructor(props) {
         super(props)
@@ -12,8 +14,21 @@ class CreateQuote extends Component {
             quote: {
                 ...quote,
                 ProjectId: props.projectId,
-            }
+            },
+            professionals: props.professionals
         }
+    }
+
+    componentDidMount() {
+
+        console.log('props first')
+        console.log(this.props.professionals)
+        console.log(this.state.professionals)
+
+        if (this.state.professionals.length == 0)
+            this.props.getProfessionals()
+        else
+            this.setState({ professionals: this.props.professionals })
     }
 
     changeValue = quoteProp => {
@@ -47,7 +62,6 @@ class CreateQuote extends Component {
                         type="text"
                         placeholder="$ 0.00"
                         onChange={e => this.changeValue({ Price: e.target.value })} />
-
                 </Col>
             </Form.Group>
 
@@ -64,21 +78,18 @@ class CreateQuote extends Component {
                         <option
                             key={0}
                             value={0}>
-                            Select a professional ...
+                            Select a professional ..
                         </option>
 
-                        <option
-                            key={1}
-                            value={24} >
-                            El mejor fotografo
-                        </option>
-                        <option
-                            key={2}
-                            value={25} >
-                            El peor fotografo
-                        </option>
-
-
+                        {this.state.professionals.map(pro => {
+                            return (
+                                <option
+                                    key={pro.Id}
+                                    value={pro.Id}>
+                                    {pro.Person.FullName}
+                                </option>
+                            )
+                        })}
                     </Form.Control>
                 </Col>
             </Form.Group>
@@ -105,7 +116,18 @@ class CreateQuote extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        professionals: state.professionals,
+    }
+}
 
+const mapDispatchToProps = dispatch => {
+    return {
+        getProfessionals: () => {
+            dispatch(loadProfessionals())
+        }
+    }
+}
 
-
-export default CreateQuote
+export default connect(mapStateToProps, mapDispatchToProps)(CreateQuote)
