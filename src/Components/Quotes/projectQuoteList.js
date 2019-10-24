@@ -70,6 +70,8 @@ class projectQuoteList extends Component {
                     ADD QUOTE
                 </Button>
 
+                <hr />
+
                 {
                     proj.Quotes.length > 0
                         ?

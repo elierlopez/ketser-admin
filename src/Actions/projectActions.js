@@ -1,6 +1,6 @@
 import axios from 'axios'
 import * as types from './types'
-import * as url from './backendUrl'
+import * as url from '../Constants/backendUrl'
 
 const replaceProjects = () => {
     const access_token = localStorage.getItem('token')
@@ -13,20 +13,21 @@ const replaceProjects = () => {
                     projects: response.data
                 })
             })
-            .catch(err => console.log(`$Issues calling ${url.GetAllProjects} --> ${err}`))
+            .catch(err => console.log(`Issues calling ${url.GetAllProjects} --> ${err}`))
     }
 }
 
-const saveProject = person => {
+const saveProject = project => {
     return dispatch => {
-        return axios.post(url.SaveProject, person)
+        dispatch({ type: types.SAVE_PROJECT_START })
+        return axios.post(url.SaveProject, project)
             .then(response => {
                 dispatch({
-                    type: types.SAVE_PROJECT,
+                    type: types.SAVE_PROJECT_SUCCESS,
                     project: response.data
                 })
             })
-            .catch(() => console.log(`$Issues calling ${url.SaveProject}`))
+            .catch(() => console.log(`Issues calling ${url.SaveProject}`))
     }
 }
 

@@ -1,9 +1,9 @@
 import { Modal, Button, FormControl, FormGroup, FormCheck, Image } from 'react-bootstrap'
-import React, { Component } from 'react'
-import { PersonImagePath } from '../../Actions/backendUrl'
+import React from 'react'
+import { PersonImagePath } from '../../Constants/backendUrl'
 import './styles.css';
 
-class PersonsModal extends Component {
+class PersonsModal extends React.Component {
     constructor(props) {
         super(props)
         this.state = {

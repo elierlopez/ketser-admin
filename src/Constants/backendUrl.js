@@ -22,7 +22,7 @@ export const GetProfessionals = `${RestUrl}/ProfessionalProfile/GetProfiles`
 
 //Services
 export const GetCategorizedServices = `${RestUrl}/Service/GetCategorizedServices`
-export const GetAllServices = `${RestUrl}/Service/GetAll?includeInactives=true`
+export const GetAllServices = `${RestUrl}/Service/GetAll`
 export const Save_Service = `${RestUrl}/Service/SaveProfile`
 export const ServiceImagePath = `${KetserSiteUrl}/Images/Services`
 

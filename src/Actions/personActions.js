@@ -1,6 +1,6 @@
 import axios from 'axios'
 import * as types from './types'
-import * as url from './backendUrl'
+import * as url from '../Constants/backendUrl'
 
 const replacePersons = () => {
     return dispatch => {

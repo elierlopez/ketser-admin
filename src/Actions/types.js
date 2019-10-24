@@ -14,7 +14,8 @@ export const SAVE_PROFESSIONAL = 'SAVE_PROFESSIONAL'
 
 //projects
 export const GET_PROJECTS = 'GET_PROJECTS'
-export const SAVE_PROJECT = 'SAVE_PROJECT'
+export const SAVE_PROJECT_START = 'SAVE_PROJECT_START'
+export const SAVE_PROJECT_SUCCESS = 'SAVE_PROJECT_SUCCESS'
 
 //quotes
 export const SAVE_QUOTE = 'SAVE_QUOTE'

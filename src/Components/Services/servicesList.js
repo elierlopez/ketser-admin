@@ -3,7 +3,7 @@ import { Table, Modal, Button, FormControl, FormGroup, Form, Image } from 'react
 import React, { Component } from 'react'
 import ServiceItem from './serviceItem'
 import { replaceServices, saveService } from '../../Actions/serviceActions'
-import { ServiceImagePath } from '../../Actions/backendUrl'
+import { ServiceImagePath } from '../../Constants/backendUrl'
 
 class AllServices extends Component {
     constructor() {
@@ -145,7 +145,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         load: () => {
-            dispatch(replaceServices())
+            dispatch(replaceServices(true))
         },
         save: service => {
             dispatch(saveService(service))

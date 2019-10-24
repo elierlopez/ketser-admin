@@ -1,7 +1,6 @@
 import React from 'react'
 import { Form, Row, Col } from 'react-bootstrap'
 import { connect } from 'react-redux'
-// import { dateAndDefaultTimeFormat } from '../../Util/formaters'
 import { quote } from '../../Constants/modelDefaults'
 import './index.css'
 import { loadProfessionals } from '../../Actions/professionalActions'

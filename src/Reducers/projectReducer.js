@@ -4,13 +4,18 @@ export default function (state = [], action) {
     if (action.type === actionType.GET_PROJECTS) {
         return action.projects
     }
-    else if (action.type === actionType.SAVE_PROJECT) {
-        const stateCopy = [...state]
+    else if (action.type === actionType.SAVE_PROJECT_SUCCESS) {
+        let stateCopy = [...state]
         const index = state.findIndex(i => i.Id === action.project.Id)
+
         if (index > -1) {
             stateCopy[index] = action.project
-            return stateCopy
         }
+        else {
+            stateCopy = [...stateCopy, action.project]
+        }
+
+        return stateCopy
     }
     else if (action.type === actionType.ADD_QUOTE_SUCCESS) {
         const stateCopy = [...state]

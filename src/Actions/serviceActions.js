@@ -1,10 +1,10 @@
 import axios from 'axios'
 import * as types from './types'
-import * as url from './backendUrl'
+import * as url from '../Constants/backendUrl'
 
-const replaceServices = () => {
+const replaceServices = (includeInactives = false) => {
     return dispatch => {
-        return axios.get(url.GetAllServices)
+        return axios.get(`${url.GetAllServices}?includeInactives=${includeInactives}`)
             .then(response => {
                 dispatch({
                     type: types.GET_SERVICES,

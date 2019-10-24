@@ -1,12 +1,14 @@
 import { connect } from 'react-redux'
-import { Table } from 'react-bootstrap'
-import React, { Component } from 'react'
+import { Table, Button } from 'react-bootstrap'
+import React from 'react'
 
 import { replaceProjects, saveProject } from '../../Actions/projectActions'
 import ProjectItem from '../Projects/projectItem'
+import { modalService } from '../Modal'
+import CreateProject from './createProject'
 
 
-class ProjectList extends Component {
+class ProjectList extends React.Component {
     constructor() {
         super()
         this.state = {
@@ -15,45 +17,64 @@ class ProjectList extends Component {
         }
     }
 
-    openModalHandler = (modalProject) => {
-        this.setState({
-            isModalOpen: true,
-            modalProject
-        })
-    }
-
-    closeModalHandler = () => {
-        this.setState({
-            isModalOpen: false
-        })
-    }
-
     componentDidMount() {
         if (this.props.projects.length == 0)
             this.props.load()
     }
 
-    handleSave = project => {
-        this.props.save(project)
-        this.closeModalHandler()
+    updateProjectValue = project => {
+        this.setState({ modalProject: project })
+    }
+
+    saveProject = () => {
+        this.props.saveProject(this.state.modalProject)
+        modalService.close()
+    }
+
+    showProjectModal = () => {
+        const actions =
+            <React.Fragment>
+                <Button variant="warning" onClick={() => modalService.close()}>
+                    CANCEL
+                </Button>
+                <Button variant="success" onClick={this.saveProject}>
+                    SAVE
+                </Button>
+            </React.Fragment>
+
+        modalService.show({
+            hasTitle: true,
+            title: "PROJECT",
+            body: <CreateProject
+                updateProjectValue={this.updateProjectValue} />,
+            actions,
+            show: true
+        })
     }
 
     projectTable = () => {
         return (
-            <Table striped bordered hover>
-                <thead>
-                    <tr>
-                        <th>Service</th>
-                        <th>Description</th>
-                        <th>Created At</th>
-                        <th>Start Date</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {this.renderUserItems()}
-                </tbody>
-            </Table>
+            <React.Fragment>
+
+                <Button variant="success" onClick={this.showProjectModal}>
+                    ADD PROJECT
+                </Button>
+                <hr />
+                <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                            <th>Service</th>
+                            <th>Description</th>
+                            <th>Created At</th>
+                            <th>Start Date</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.renderUserItems()}
+                    </tbody>
+                </Table>
+            </React.Fragment>
         );
     }
 
@@ -91,7 +112,7 @@ const mapDispatchToProps = dispatch => {
         load: () => {
             dispatch(replaceProjects())
         },
-        save: project => {
+        saveProject: project => {
             dispatch(saveProject(project))
         }
     }
