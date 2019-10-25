@@ -84,7 +84,6 @@ class ProjectList extends React.Component {
                 <ProjectItem
                     key={proj.Id}
                     {...proj}
-                    openModal={() => this.openModalHandler(proj)}
                 />
             )
         })

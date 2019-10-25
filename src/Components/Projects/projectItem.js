@@ -5,9 +5,9 @@ import { dateAndDefaultTimeFormat } from '../../Util/formaters'
 // import { PersonImagePath } from '../../Actions/backendUrl'
 
 class ProjectItem extends Component {
-    simpleRow = ({ Id, Service, Description, CreatedAt, StartDate, openModal }) => {
+    simpleRow = ({ Id, Service, Description, CreatedAt, StartDate}) => {
         return (
-            <tr onDoubleClick={openModal} >
+            <tr >
                 <td className="names">{Id} {Service.Name}</td>
                 <td className="names">{Description}</td>
                 <td>{dateAndDefaultTimeFormat(CreatedAt)}</td>
