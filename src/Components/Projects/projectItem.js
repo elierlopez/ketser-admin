@@ -16,7 +16,7 @@ class ProjectItem extends Component {
 
                     <Link to={'/Quotes/' + Id} >
                         <Button variant="success">
-                            GO
+                            OPEN
                         </Button>
                     </Link>
 
