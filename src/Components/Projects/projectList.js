@@ -18,7 +18,7 @@ class ProjectList extends React.Component {
     }
 
     componentDidMount() {
-        if (this.props.projects.length == 0)
+        if (this.props.projects.length === 0)
             this.props.load()
     }
 

@@ -13,7 +13,7 @@ class projectQuoteList extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            projectId: props.match.params.projectId,
+            projectId: parseInt(props.match.params.projectId),
             modalQuote: {}
         }
     }
@@ -59,7 +59,7 @@ class projectQuoteList extends Component {
     }
 
     renderContent = () => {
-        const index = this.props.projects.findIndex(i => i.Id == this.state.projectId)
+        const index = this.props.projects.findIndex(i => i.Id === this.state.projectId)
         const proj = this.props.projects[index]
         return (
             <React.Fragment>

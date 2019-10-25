@@ -37,7 +37,7 @@ class CreateProject extends React.Component {
     }
 
     componentDidMount = () => {
-        if (this.props.persons.length == 0)
+        if (this.props.persons.length === 0)
             this.props.getPersons()
 
         // if (this.props.services.length == 0) 

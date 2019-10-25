@@ -25,7 +25,7 @@ class CreateQuote extends React.Component {
         in componentDidUpdate which is executed either by props change or state update event 
     */
     componentDidMount() {
-        if (this.state.professionals.length == 0)
+        if (this.state.professionals.length === 0)
             this.props.getProfessionals()
     }
 
@@ -37,7 +37,7 @@ class CreateQuote extends React.Component {
      */
     componentDidUpdate(prevProps, prevState) {
 
-        if (prevState.professionals.length == 0 && this.props.professionals.length != 0)
+        if (prevState.professionals.length === 0 && this.props.professionals.length !== 0)
             this.setState({ professionals: this.props.professionals })
     }
 
