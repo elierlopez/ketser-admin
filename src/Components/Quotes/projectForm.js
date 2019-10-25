@@ -10,11 +10,10 @@ import './index.css'
 class ProjectForm extends Component {
 
     constructor(props) {
-        console.log(props.project)
         super(props)
         this.state = {
             project: props.project,
-            startDate: new Date(dateAndDefaultTimeFormat(props.project.StartDate))
+            startDate: new Date(props.project.StartDate)
         }
     }
 

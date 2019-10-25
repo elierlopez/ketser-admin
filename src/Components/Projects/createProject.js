@@ -16,7 +16,7 @@ class CreateProject extends React.Component {
         this.defaultProject = props.project != null ? props.project : project
 
         this.state = {
-            startDate: new Date()
+            startDate: new Date() 
         }
     }
 
