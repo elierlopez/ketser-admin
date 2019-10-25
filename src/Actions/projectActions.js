@@ -6,10 +6,11 @@ const replaceProjects = () => {
     const access_token = localStorage.getItem('token')
     const config = { headers: { Authorization: `Bearer ${access_token}` } };
     return dispatch => {
+        dispatch({ type: types.GET_PROJECTS_START })
         return axios.get(url.GetAllProjects, config)
             .then(response => {
                 dispatch({
-                    type: types.GET_PROJECTS,
+                    type: types.GET_PROJECTS_SUCCESS,
                     projects: response.data
                 })
             })

@@ -6,7 +6,7 @@ import QuoteItem from '../Quotes/quoteItem'
 import ProjectForm from '../Quotes/projectForm'
 import CreateQuote from '../Quotes/createQuote'
 import { modalService } from '../Modal'
-import { addQuote } from '../../Actions/quoteActions'
+import { addQuote, removeQuote } from '../../Actions/quoteActions'
 
 class projectQuoteList extends Component {
 
@@ -29,6 +29,10 @@ class projectQuoteList extends Component {
 
     updateQuoteValue = quote => {
         this.setState({ modalQuote: quote })
+    }
+
+    removeQuote = quote => {
+        this.props.removeQuote(quote)
     }
 
     showModal = () => {
@@ -101,6 +105,7 @@ class projectQuoteList extends Component {
                 <QuoteItem
                     key={quote.Id}
                     {...quote}
+                    RemoveQuote={() => this.removeQuote(quote)}
                     Ï />
             )
         })
@@ -129,6 +134,9 @@ const mapDispatchToProps = dispatch => {
         },
         addQuote: quote => {
             dispatch(addQuote(quote))
+        },
+        removeQuote: quote => {
+            dispatch(removeQuote(quote))
         }
     }
 }

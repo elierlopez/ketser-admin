@@ -9,6 +9,7 @@ export const GetProjectQuotesByPersonId = `${RestUrl}/Project/GetProjectQuotes`
 
 //Quote
 export const SaveQuote = `${RestUrl}/Quote/Save`
+export const RemoveQuote = `${RestUrl}/Quote/Remove`
 
 //Person
 export const GetAllPersons = `${RestUrl}/Person/GetAll?includeInactives=true`

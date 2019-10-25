@@ -16,7 +16,6 @@ class AllServices extends Component {
     }
 
     openModalHandler = (e, modalService) => {
-        console.log(modalService)
         this.setState({
             isModalOpen: true,
             modalService
